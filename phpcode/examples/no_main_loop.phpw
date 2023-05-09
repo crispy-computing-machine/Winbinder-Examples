@@ -1,0 +1,16 @@
+<?php
+
+// Message boxes and system dialog boxes are special cases where no call to wb_main_loop() is needed
+
+include("../include/winbinder.php");       // Include WinBinder library
+
+if(wb_message_box(0, "This program has no Windows loop.\nCan you believe it?", '', WBC_YESNO)) {
+	$color = wb_sys_dlg_color(0, '', RED);
+
+	if($color != NOCOLOR)
+		wb_message_box(0, sprintf('You selected color %08X.', $color), '', WBC_INFO);
+	else
+		wb_message_box(0, "You did not select a color.", '', WBC_WARNING);
+}
+
+?>

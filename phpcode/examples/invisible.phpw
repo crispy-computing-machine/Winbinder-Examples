@@ -1,0 +1,99 @@
+<?php
+
+/*******************************************************************************
+
+ WINBINDER - The native Windows binding for PHP for PHP
+
+ Copyright Hypervisual - see LICENSE.TXT for details
+ Author: Rubem Pechansky (https://github.com/crispy-computing-machine/Winbinder)
+
+ Invisible buttons
+
+*******************************************************************************/
+
+//------------------------------------------------------------ SYSTEM PARAMETERS
+
+define("PATH_SCRIPT",	dirname(__FILE__) . "/");
+define("PATH_DATA",		PATH_SCRIPT);
+define("PATH_INC",		PATH_SCRIPT . "../include/");
+define("PATH_RES",		PATH_SCRIPT . "../resources/");
+
+//----------------------------------------------------------------- DEPENDENCIES
+
+include PATH_INC . "winbinder.php";
+
+//-------------------------------------------------------------------- CONSTANTS
+
+define("APPNAME", 	"Invisible controls");
+
+//-------------------------------------------------------------- EXECUTABLE CODE
+
+// Create main window and controls
+
+$mainwin = wb_create_window(0, PopupWindow, APPNAME, WBC_CENTER, WBC_CENTER, 200, 200);
+
+$statusbar = _create_control($mainwin, StatusBar, "Click the screen");
+
+wb_set_cursor(ImageButton, 'finger');
+
+_create_control($mainwin, ImageButton, "",   0,   0, 100, 100, 101);
+_create_control($mainwin, ImageButton, "", 100,   0, 100, 100, 102);
+_create_control($mainwin, ImageButton, "",   0, 100, 100, 100, 103);
+_create_control($mainwin, ImageButton, "", 100, 100, 100, 100, 104);
+
+
+class TestObjectHandler {
+	
+	function process_main($window, $id, $ctrl=0, $lparam=0, $lparam2=0, $lparam3=0)
+	{
+		global $statusbar;
+
+		switch($id) {
+
+			case IDCLOSE:
+				wb_destroy_window($window);
+				break;
+
+			case IDDEFAULT:
+				break;
+
+			default:
+				wb_play_sound(WBC_BEEP);
+				_set_text($statusbar, "Control $id was clicked.");
+				break;
+		}
+	}
+	
+}
+
+$testObjectHandler = new TestObjectHandler();
+wb_set_handler($mainwin, [$testObjectHandler, 'process_main']);
+
+
+#wb_set_handler($mainwin, "process_main");
+wb_main_loop();
+
+function process_main($window, $id, $ctrl=0, $lparam=0, $lparam2=0, $lparam3=0)
+{
+	global $statusbar;
+
+	switch($id) {
+
+		case IDCLOSE:
+			wb_destroy_window($window);
+			break;
+
+		case IDDEFAULT:
+			break;
+
+		default:
+			wb_play_sound(WBC_BEEP);
+			_set_text($statusbar, "Control $id was clicked.");
+			break;
+	}
+}
+
+
+//-------------------------------------------------------------------------- END
+
+?>

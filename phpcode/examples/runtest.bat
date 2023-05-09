@@ -1,0 +1,1 @@
+start ..\..\binaries\php533\php-win.exe -c ..\..\binaries\php533\php.ini accel.phpw 
