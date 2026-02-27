@@ -30,9 +30,9 @@ _create_control($mainwin, TabControl, "", 4, 35, 540, 274, IDC_TABCONTROL1003, W
 _create_control($mainwin, PushButton, "&Fechar", 494, 315, 50, 45, ID_EXIT, WBC_VISIBLE | WBC_ENABLED, 0);
 _create_control($mainwin, PushButton, "", 259, 318, 40, 40, IDC_BUTTON1035, WBC_VISIBLE | WBC_ENABLED, 0);
 $_tmp_ctrl_ = _create_control($mainwin, PushButton, "hyper.ico", 304, 318, 40, 40, IDC_BUTTON1036, WBC_VISIBLE | WBC_ENABLED, 0);
-wb_set_image($_tmp_ctrl_, 'C:\dev\027e95115cf6ac1119126ca95379de1b\windows\examples\phpcode\examples/../resources/hyper.ico', GREEN); unset($_tmp_ctrl_);
+wb_set_image($_tmp_ctrl_, 'D:\Projects\Winbinder-Examples\phpcode\examples/../resources/hyper.ico', GREEN); unset($_tmp_ctrl_);
 $_tmp_ctrl_ = _create_control($mainwin, PushButton, "ok.bmp", 349, 318, 40, 40, IDC_BUTTON1037, WBC_VISIBLE | WBC_ENABLED, 0);
-wb_set_image($_tmp_ctrl_, 'C:\dev\027e95115cf6ac1119126ca95379de1b\windows\examples\phpcode\examples/../resources/ok.bmp', GREEN); unset($_tmp_ctrl_);
+wb_set_image($_tmp_ctrl_, 'D:\Projects\Winbinder-Examples\phpcode\examples/../resources/ok.bmp', GREEN); unset($_tmp_ctrl_);
 _create_control($mainwin, PushButton, "Zero", 214, 318, 40, 40, IDC_BUTTON1039, WBC_VISIBLE | WBC_ENABLED, 0);
 _create_control($mainwin, Label, "...", 346, 365, 202, 19, ID_GDI, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
 _create_control($mainwin, EditBox, "(Results)", 4, 315, 205, 45, ID_RESULT, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);

@@ -19,10 +19,6 @@ if(PHP_VERSION < "5")
 
 
 // -------------------------------------------------------------------- CONSTANTS
-define("FETCH_BOTH", SQLITE_BOTH);
-define("FETCH_NUM", SQLITE_NUM);
-define("FETCH_ASSOC", SQLITE_ASSOC);
-// -------------------------------------------------------------------- CONSTANTS
 define("DB_SQLITE_WRAP", "db_v2b");
 // ----------------------------------------------------------- DATABASE VERSION CHECK
 

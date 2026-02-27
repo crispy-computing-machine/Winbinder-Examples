@@ -136,18 +136,18 @@ _create_control($maintab, Frame, "Group box", 4, 4, 110, 71, IDC_GROUPBOX5012, W
 _create_control($maintab, Frame, "", 325, 9, 130, 3, IDC_SHAPE5056, WBC_VISIBLE | WBC_ENABLED, 0, 2);
 _create_control($maintab, Frame, "", 464, 9, 1, 61, IDC_SHAPE5057, WBC_VISIBLE | WBC_ENABLED, 0, 2);
 $_tmp_ctrl_ = _create_control($maintab, Frame, "dn_arrow.bmp", 4, 139, 112, 45, IDC_STATIC5062, WBC_VISIBLE | WBC_ENABLED | WBC_BORDER | WBC_IMAGE | WBC_CENTER, 0, 2);
-wb_set_image($_tmp_ctrl_, 'C:\dev\027e95115cf6ac1119126ca95379de1b\windows\examples\phpcode\examples/../resources/dn_arrow.bmp', GREEN); unset($_tmp_ctrl_);
+wb_set_image($_tmp_ctrl_, 'D:\Projects\Winbinder-Examples\phpcode\examples/../resources/dn_arrow.bmp', GREEN); unset($_tmp_ctrl_);
 _create_control($maintab, Label, "This text is centered.", 464, 79, 61, 35, IDC_STATIC5060, WBC_VISIBLE | WBC_ENABLED | WBC_CENTER, 0, 2);
 _create_control($maintab, Label, "For a 'sunken' frame or label, use WinBinder style WBC_BORDER (WS_EX_STATICEDGE).", 4, 84, 181, 45, IDC_SHAPE5061, WBC_VISIBLE | WBC_ENABLED | WBC_BORDER | WBC_MULTILINE, 0, 2);
 $_tmp_ctrl_ = _create_control($maintab, Frame, "hyper.ico", 124, 139, 112, 45, IDC_STATIC5063, WBC_VISIBLE | WBC_ENABLED | WBC_IMAGE | WBC_CENTER, 0, 2);
-wb_set_image($_tmp_ctrl_, 'C:\dev\027e95115cf6ac1119126ca95379de1b\windows\examples\phpcode\examples/../resources/hyper.ico', GREEN); unset($_tmp_ctrl_);
+wb_set_image($_tmp_ctrl_, 'D:\Projects\Winbinder-Examples\phpcode\examples/../resources/hyper.ico', GREEN); unset($_tmp_ctrl_);
 _create_control($maintab, Label, "This label control wraps words if they do not fit in the availble space.", 4, 195, 130, 45, IDC_SHAPE5065, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0, 2);
 _create_control($maintab, Label, "This one does not wrap anything.", 139, 195, 151, 16, IDC_SHAPE5066, WBC_VISIBLE | WBC_ENABLED, 0, 2);
 _create_control($maintab, Label, "This one uses ellipsis to display the text.", 139, 219, 110, 21, IDC_SHAPE5067, WBC_VISIBLE | WBC_ENABLED | WBC_ELLIPSIS, 0, 2);
 _create_control($maintab, PushButton, "&Test", 364, 24, 76, 26, IDC_BUTTON5068, WBC_VISIBLE | WBC_ENABLED | WBC_BORDER, 0, 2);
 _create_control($maintab, PushButton, "&Test", 280, 24, 76, 26, IDC_BUTTON5068, WBC_VISIBLE | WBC_ENABLED, 0, 2);
 $_tmp_ctrl_ = _create_control($maintab, Frame, "up_arrow.bmp", 250, 134, 65, 50, IDC_STATIC5070, WBC_VISIBLE | WBC_ENABLED | WBC_IMAGE | WBC_CENTER, 0, 2);
-wb_set_image($_tmp_ctrl_, 'C:\dev\027e95115cf6ac1119126ca95379de1b\windows\examples\phpcode\examples/../resources/up_arrow.bmp', GREEN); unset($_tmp_ctrl_);
+wb_set_image($_tmp_ctrl_, 'D:\Projects\Winbinder-Examples\phpcode\examples/../resources/up_arrow.bmp', GREEN); unset($_tmp_ctrl_);
 _create_control($maintab, Label, "This text is right-aligned.", 370, 79, 85, 35, IDC_STATIC5071, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0, 2);
 
 // End controls

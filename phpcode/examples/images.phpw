@@ -39,11 +39,13 @@ $mainwin = wb_create_window(0, PopupWindow, APPNAME, WBC_CENTER, WBC_CENTER, 530
 // Create an opaque bitmapped frame
 
 $frame = _create_control($mainwin, Frame, "", 4, 20, 512, 15, ID, WBC_IMAGE);
-wb_set_image($frame, PATH_RES . 'toolbar.bmp', NOCOLOR);
+wb_set_image($frame, PATH_RES . 'toolbar.bmp', GREEN);
 
 // Create a transparent bitmapped frame
 
 $frame = _create_control($mainwin, Frame, "", 4, 40, 512, 15, ID, WBC_IMAGE);
+
+var_dump($frame, PATH_RES . 'toolbar.bmp', GREEN);
 wb_set_image($frame, PATH_RES . 'toolbar.bmp', GREEN);
 
 // Create a frame with a transparent 32 x 32 icon
@@ -52,7 +54,7 @@ $frame = _create_control($mainwin, Frame, "", 4, 70, 32, 32, ID, WBC_IMAGE);
 wb_set_image($frame, PATH_RES . 'viewer.ico');
 
 $frame = _create_control($mainwin, Frame, "", 45, 70, 32, 32, ID, WBC_IMAGE);
-wb_set_image($frame, PATH_RES . 'viewer.ico', 0, 0, 1);
+wb_set_image($frame, PATH_RES . 'viewer.ico', GREEN, 0, 1);
 
 // Create a transparent bitmap on the fly (adapted from ooi_winmine.phpw by Alexandre)
 
@@ -104,10 +106,10 @@ wb_set_image($mainwin, PATH_RES . 'hyper.ico');
 // Use an image to paint the main window
 
 $img = wb_load_image(PATH_RES . 'treeview.bmp');
-wb_draw_image($mainwin, $img, 10, 120);
-wb_draw_image($mainwin, $img, 10, 140, 96, 15, NOCOLOR, 32, 0);
-wb_draw_image($mainwin, $img, 10, 160, 96, 15, NOCOLOR, 48, 0);
-wb_draw_image($mainwin, $img, 10, 180, 96, 15, NOCOLOR, 64, 0);
+wb_draw_image($mainwin, $img, 10, 120,96, 15, GREEN);
+wb_draw_image($mainwin, $img, 10, 140, 96, 15, GREEN, 32, 0);
+wb_draw_image($mainwin, $img, 10, 160, 96, 15, GREEN, 48, 0);
+wb_draw_image($mainwin, $img, 10, 180, 96, 15, GREEN, 64, 0);
 wb_destroy_image($img);
 
 wb_main_loop();

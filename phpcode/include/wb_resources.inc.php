@@ -13,66 +13,8 @@
 
 // TODO: These functions will be replaced by the visual layout editor
 // so this file will not be necessary in the future
-
-//-------------------------------------------------------------------- CONSTANTS
-
 define("WB_KX_SCREEN", 1.498); // Determined through trial and error
 define("WB_KY_SCREEN", 1.625); // Determined through trial and error
-
-//------------------------------------------------- WINDOWS CONSTANTS FROM WIN.H
-
-define("WS_VISIBLE",			0x10000000);
-define("WS_DISABLED",			0x08000000);
-define("WS_GROUP",				0x00020000);
-define("WS_EX_STATICEDGE",		0x00020000);
-
-// Button styles
-
-define("BS_PUSHBUTTON",			0x00);
-define("BS_CHECKBOX",			0x02);
-define("BS_AUTOCHECKBOX",		0x03);
-define("BS_RADIOBUTTON",		0x04);
-define("BS_GROUPBOX",			0x07);
-define("BS_AUTORADIOBUTTON",	0x09);
-define("BS_ICON",				0x40);
-define("BS_BITMAP",				0x80);
-
-// Edit control styles
-
-define("ES_NUMBER",				0x2000);
-define("ES_PASSWORD",			0x20);
-define("ES_READONLY",			0x0800);
-define("ES_UPPERCASE",			0x08);
-define("ES_LEFT",				0x0);
-define("ES_CENTER",				0x01);
-define("ES_RIGHT",				0x02);
-define("ES_MULTILINE",			0x04);
-
-// Static styles
-
-define("SS_LEFT",				0x00);
-define("SS_CENTER",				0x01);
-define("SS_RIGHT",				0x02);
-define("SS_ETCHEDHORZ",			0x10);
-define("SS_ETCHEDVERT",			0x11);
-define("SS_ETCHEDFRAME",		0x12);
-define("SS_ICON",				0x03);
-define("SS_BITMAP",				0x0E);
-define("SS_LEFTNOWORDWRAP",		0x0C);
-define("SS_WORDELLIPSIS",		0xC000);
-
-// Other styles
-
-define("CBS_SORT",				0x100);
-define("CBS_DROPDOWNLIST",		3);
-
-define("LBS_SORT",				2);
-define("LVS_NOSORTHEADER",		0x00008000);
-define("LVS_GRIDLINES",			0x00800000);	// Actually WS_BORDER
-define("LVS_CHECKBOXES",		0x00000800);	// Actually LVS_ALIGNLEFT
-define("LVS_SINGLESEL",			0x00000004);
-define("TBS_AUTOTICKS",			1);
-
 //-------------------------------------------------------------------- FUNCTIONS
 
 /*
