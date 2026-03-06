@@ -28,18 +28,18 @@ function create_edit_dlg($parent, $id, $cat=null)
 	include("dlg_item.rc.php");
 	wb_set_handler($dlg, "process_item");
 
-	_set_text($dlg, $id ? "Edit item #$id" : "Create new item");
+	temp_set_text($dlg, $id ? "Edit item #$id" : "Create new item");
 
 	// Fill up the lists
 
 	$item_data = db_get_data("cat", null, array("name"));
-	_set_text(wb_get_control($dlg, ID_CATLIST), $item_data);
+	temp_set_text(wb_get_control($dlg, ID_CATLIST), $item_data);
 
 	$item_data = db_get_data("priority", null, array("name"));
-	_set_text(wb_get_control($dlg, ID_PRIORLIST), $item_data);
+	temp_set_text(wb_get_control($dlg, ID_PRIORLIST), $item_data);
 
 	$item_data = db_get_data("severity", null, array("name"));
-	_set_text(wb_get_control($dlg, ID_SEVERLIST), $item_data);
+	temp_set_text(wb_get_control($dlg, ID_SEVERLIST), $item_data);
 
 	update_item_controls($dlg);
 	wb_set_visible($dlg, true);
@@ -74,18 +74,18 @@ function update_item_controls($window)
 	$table = "item";
 	$data = db_get_data($table, $id_edit, null, "", FETCH_ASSOC);
 	$data = $data[0];
-	_set_text(wb_get_control($window, ID_NAME), $data["name"]);
-	_set_text(wb_get_control($window, ID_DESCRIPTION), $data["description"]);
+	temp_set_text(wb_get_control($window, ID_NAME), $data["name"]);
+	temp_set_text(wb_get_control($window, ID_DESCRIPTION), $data["description"]);
 
 	// Select the appropriate values from the combo boxes
 
-	_set_selected(wb_get_control($window, ID_CATLIST), (int)array_search(($curr_cat === null) ?
+	temp_set_selected(wb_get_control($window, ID_CATLIST), (int)array_search(($curr_cat === null) ?
 		$data["cat"] : $curr_cat, db_get_data("cat", null, "id")));
 
-	_set_selected(wb_get_control($window, ID_PRIORLIST), (int)array_search($data["priority"],
+	temp_set_selected(wb_get_control($window, ID_PRIORLIST), (int)array_search($data["priority"],
 	  db_get_data("priority", null, "id")));
 
-	_set_selected(wb_get_control($window, ID_SEVERLIST), (int)array_search($data["severity"],
+	temp_set_selected(wb_get_control($window, ID_SEVERLIST), (int)array_search($data["severity"],
 	  db_get_data("severity", null, "id")));
 }
 
@@ -93,8 +93,8 @@ function update_item($window)
 {
 	global $id_edit;
 
-	$name = _get_text(wb_get_control($window, ID_NAME));
-	$descr = _get_text(wb_get_control($window, ID_DESCRIPTION));
+	$name = temp_get_text(wb_get_control($window, ID_NAME));
+	$descr = temp_get_text(wb_get_control($window, ID_DESCRIPTION));
 
 	// Fetch the id from table 'cat'
 

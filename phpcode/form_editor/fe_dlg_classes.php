@@ -33,7 +33,7 @@ function create_classes_dlg($parent)
 
 	for($i = 0; $i < $nclasses; $i++) {
 		$const = "IDC_" . strtoupper($wb->classes[$i][1]);
-		$c = _create_control($wb->classdlg, ImageButton,
+		$c = temp_create_control($wb->classdlg, ImageButton,
 			array('', $wb->classes[$i][1]),
 			4 + 25 * ($i % 3),
 			4 + 25 * (int)($i / 3),
@@ -61,7 +61,7 @@ function process_classes($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 				$c = wb_get_control($wb->classdlg, constant($const));
 			}
 			wb_destroy_window($window);
-			_set_selected($wb->mainmenu, ID_TOOLBOX, false);
+			temp_set_selected($wb->mainmenu, ID_TOOLBOX, false);
 			$wb->classdlg = null;
 			break;
 

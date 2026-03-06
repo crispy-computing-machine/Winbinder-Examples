@@ -32,7 +32,7 @@ function create_cat_dlg($parent)
 
 	// Temporarily disabled
 
-	_set_text($dlg, "Edit categories (TEMPORARILY DISABLED)");
+	temp_set_text($dlg, "Edit categories (TEMPORARILY DISABLED)");
 }
 
 function process_cat($window, $id)
@@ -46,7 +46,7 @@ function process_cat($window, $id)
 			break;
 
 		case ID_NEWITEM:
-			$name = _get_text(wb_get_control($window, ID_NAME));
+			$name = temp_get_text(wb_get_control($window, ID_NAME));
 			$level = wb_get_selected(wb_get_control($window, ID_LEVEL));
 //			db_edit_record($cat_table, 0, "name\nlevel", array($name, $level));
 			update_tree($window);
@@ -54,7 +54,7 @@ function process_cat($window, $id)
 			break;
 
 		case ID_SETITEM:
-			$name = _get_text(wb_get_control($window, ID_NAME));
+			$name = temp_get_text(wb_get_control($window, ID_NAME));
 			$level = wb_get_selected(wb_get_control($window, ID_LEVEL));
 			$id = get_selected_tree_item_id($window);
 //			db_edit_record($cat_table, $id, "name\nlevel", array($name, $level));
@@ -103,7 +103,7 @@ function update_cat_controls($window)
 	// Below: get id of selected treeview element. See comment in update_items()
 
 	$it_list = wb_get_control($window, ID_TREE);
-	$sel_text = _get_text($it_list);
+	$sel_text = temp_get_text($it_list);
 	$cat_data = db_get_data("cat", null, "name");
 	$sel_index = (int)array_search($sel_text, $cat_data);
 	$cat_data = db_get_data("cat", null, "id");
@@ -112,8 +112,8 @@ function update_cat_controls($window)
 	$data = db_get_data($cat_table, $id, null, "", FETCH_ASSOC);
 	$data = $data[0];
 
-	_set_text(wb_get_control($window, ID_NAME), $data["name"]);
-	_set_value(wb_get_control($window, ID_LEVEL), $data["level"]);
+	temp_set_text(wb_get_control($window, ID_NAME), $data["name"]);
+	temp_set_value(wb_get_control($window, ID_LEVEL), $data["level"]);
 
 	wb_set_enabled(wb_get_control($window, ID_SETITEM), $sel_text != "");
 	wb_set_enabled(wb_get_control($window, ID_DELETEITEM), $sel_text != "");
@@ -126,7 +126,7 @@ function get_selected_tree_item_id($window)
 	// Below: get id of selected treeview element. See comment in update_items()
 
 	$it_list = wb_get_control($window, ID_TREE);
-	$sel_text = _get_text($it_list);
+	$sel_text = temp_get_text($it_list);
 	$cat_data = db_get_data("cat", null, "name");
 	$sel_index = (int)array_search($sel_text, $cat_data);
 	$cat_data = db_get_data("cat", null, "id");
@@ -142,7 +142,7 @@ function get_selected_tree_item_index($window)
 	// Below: get id of selected treeview element. See comment in update_items()
 
 	$it_list = wb_get_control($window, ID_TREE);
-	$sel_text = _get_text($it_list);
+	$sel_text = temp_get_text($it_list);
 	$cat_data = db_get_data("cat", null, "name");
 	$sel_index = (int)array_search($sel_text, $cat_data);
 	return $sel_index;

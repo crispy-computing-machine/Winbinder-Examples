@@ -39,14 +39,14 @@ function process_sever($window, $id)
 			break;
 
 		case ID_NEWITEM:
-			$name = _get_text(wb_get_control($window, ID_NAME));
+			$name = temp_get_text(wb_get_control($window, ID_NAME));
 			db_edit_record($sever_table, 0, "name", array($name));
 			update_severs($window);
 			update_sever_controls($window);
 			break;
 
 		case ID_SETITEM:
-			$name = _get_text(wb_get_control($window, ID_NAME));
+			$name = temp_get_text(wb_get_control($window, ID_NAME));
 			$itemlist = wb_get_control($window, ID_SEVERITYLIST);
 			$id = db_get_id($sever_table, wb_get_selected($itemlist));
 			db_edit_record($sever_table, $id, "name", array($name));
@@ -98,7 +98,7 @@ function update_severs($window)
 	global $sever_table;
 
 	$itemlist = wb_get_control($window, ID_SEVERITYLIST);
-	_set_text($itemlist, db_get_data($sever_table, null, "name"));
+	temp_set_text($itemlist, db_get_data($sever_table, null, "name"));
 }
 
 /* Update controls */
@@ -110,7 +110,7 @@ function update_sever_controls($window)
 	$itemlist = wb_get_control($window, ID_SEVERITYLIST);
 
 	$id = db_get_id($sever_table, wb_get_selected($itemlist));
-	_set_text(wb_get_control($window, ID_NAME),
+	temp_set_text(wb_get_control($window, ID_NAME),
 		db_get_data($sever_table, $id, "name"));
 
 	$sel = wb_get_selected($itemlist);

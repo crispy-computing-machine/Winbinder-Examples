@@ -16,9 +16,9 @@ $options_dlg = wb_create_window(null, AppWindow, 'A dialog box with tabs', WBC_C
 
 // Insert controls
 
-$tab = _create_control($options_dlg, TabControl, 'General,Advanced', 10, 10, 310, 305, IDC_MAINTAB, 0x00000000, 0, 0);
-_create_control($options_dlg, PushButton, 'OK', 65, 330, 90, 25, IDOK, 0x00000000, 0, 0);
-_create_control($options_dlg, PushButton, 'Cancel', 170, 330, 90, 25, IDCANCEL, 0x00000000, 0, 0);
+$tab = temp_create_control($options_dlg, TabControl, 'General,Advanced', 10, 10, 310, 305, IDC_MAINTAB, 0x00000000, 0, 0);
+temp_create_control($options_dlg, PushButton, 'OK', 65, 330, 90, 25, IDOK, 0x00000000, 0, 0);
+temp_create_control($options_dlg, PushButton, 'Cancel', 170, 330, 90, 25, IDCANCEL, 0x00000000, 0, 0);
 
 // End controls
 

@@ -38,14 +38,14 @@ $cpwindow = wb_create_window(0, PopupWindow, "Calendar test", WBC_CENTER, WBC_CE
 
 // Create calendar control
 
-$calendar = _create_control($cpwindow, Calendar, "", 95, 70, 200, 160, ID_CALENDAR, WBC_BORDER);
+$calendar = temp_create_control($cpwindow, Calendar, "", 95, 70, 200, 160, ID_CALENDAR, WBC_BORDER);
 
 // Create other controls
 
-$statusbar = _create_control($cpwindow, StatusBar);
-$edit = _create_control($cpwindow, EditBox, "+2 week 2 days", 10, 10, 260, 20, ID_STRTOTIME);
-$button = _create_control($cpwindow, PushButton, "Update calendar", 295, 8, 90, 24, ID_UPDATE, 0);
-_create_control($cpwindow, Label, "Type a valid strtotime() string or leave the edit control blank.", 10, 40, 380, 20);
+$statusbar = temp_create_control($cpwindow, StatusBar);
+$edit = temp_create_control($cpwindow, EditBox, "+2 week 2 days", 10, 10, 260, 20, ID_STRTOTIME);
+$button = temp_create_control($cpwindow, PushButton, "Update calendar", 295, 8, 90, 24, ID_UPDATE, 0);
+temp_create_control($cpwindow, Label, "Type a valid strtotime() string or leave the edit control blank.", 10, 40, 380, 20);
 
 // Set handler and start application
 
@@ -62,23 +62,23 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 
 		case ID_UPDATE:
 
-			@$date = strtotime(_get_text($edit));
+			@$date = strtotime(temp_get_text($edit));
 
 			if($date != -1) {
-				_set_value($calendar, $date);
+				temp_set_value($calendar, $date);
 				$date = date(DATE_FMT, $date);
-				_set_text($statusbar, "Ready");
+				temp_set_text($statusbar, "Ready");
 			} else {
-				_set_text($edit, "");
-				_set_text($statusbar, "strtotime() valid date format or blank required");
+				temp_set_text($edit, "");
+				temp_set_text($statusbar, "strtotime() valid date format or blank required");
 			}
 			break;
 
 		case ID_CALENDAR:
 			$date = date(DATE_FMT, wb_get_value($ctrl));
 			//$date = date(DATE_FMT, $lparam1);				// Does the same thing
-			_set_text($statusbar, "Ready");
-			_set_text($edit, $date);
+			temp_set_text($statusbar, "Ready");
+			temp_set_text($edit, $date);
 			break;
 
 		case IDCLOSE:

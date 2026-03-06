@@ -51,15 +51,15 @@ wb_set_handler($mainwin, "process_main");
 
 // Create controls
 
-_create_control($mainwin, EditBox, "", 10, 15, 225, 22, ID_EDIT);
-_create_control($mainwin, PushButton, "Change", 240, 14, 50, 24, IDOK, WBC_DISABLED);
-_create_control($mainwin, EditBox, "", 10,150, 280, 22, ID_DESCRIPTION, WBC_READONLY);
-_create_control($mainwin, StatusBar, "Click to select, Double-click to edit", $mainwin, 0, 0, 0);
-$itemlist = _create_control($mainwin, ListBox, "", 10, 45, 280,100, ID_ITEMLIST);
+temp_create_control($mainwin, EditBox, "", 10, 15, 225, 22, ID_EDIT);
+temp_create_control($mainwin, PushButton, "Change", 240, 14, 50, 24, IDOK, WBC_DISABLED);
+temp_create_control($mainwin, EditBox, "", 10,150, 280, 22, ID_DESCRIPTION, WBC_READONLY);
+temp_create_control($mainwin, StatusBar, "Click to select, Double-click to edit", $mainwin, 0, 0, 0);
+$itemlist = temp_create_control($mainwin, ListBox, "", 10, 45, 280,100, ID_ITEMLIST);
 
 // Fill up list with items
 
-_set_text($itemlist, $items);
+temp_set_text($itemlist, $items);
 
 // Start
 
@@ -77,22 +77,22 @@ function process_main($window, $id, $ctrl=0, $lparam=0)
 
 		case ID_ITEMLIST:
 			if($lparam == WBC_DBLCLICK) {
-				_set_text(wb_get_control($window, ID_EDIT), _get_text($ctrl));
-				_set_text(wb_get_control($window, ID_DESCRIPTION), "");
+				temp_set_text(wb_get_control($window, ID_EDIT), temp_get_text($ctrl));
+				temp_set_text(wb_get_control($window, ID_DESCRIPTION), "");
 				wb_set_enabled(wb_get_control($window, IDOK), TRUE);
 			} else {
-				_set_text(wb_get_control($window, ID_EDIT), "");
-				_set_text(wb_get_control($window, ID_DESCRIPTION), _get_text($ctrl));
+				temp_set_text(wb_get_control($window, ID_EDIT), "");
+				temp_set_text(wb_get_control($window, ID_DESCRIPTION), temp_get_text($ctrl));
 				wb_set_enabled(wb_get_control($window, IDOK), FALSE);
 			}
 			break;
 
 		case IDOK:
-			$text = trim(_get_text(wb_get_control($window, ID_EDIT)));
+			$text = trim(temp_get_text(wb_get_control($window, ID_EDIT)));
 			if($text) {
 				$items[wb_get_selected($itemlist)] = $text;
-				_set_text($itemlist, $items);
-				_set_text(wb_get_control($window, ID_EDIT), "");
+				temp_set_text($itemlist, $items);
+				temp_set_text(wb_get_control($window, ID_EDIT), "");
 			}
 			break;
 

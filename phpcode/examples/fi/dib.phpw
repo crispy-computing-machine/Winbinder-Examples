@@ -120,7 +120,7 @@ function create_frame($window, $xpos, $ypos, $filename)
 
 	// Create control
 
-	$frame = _create_control($window, Frame, "",
+	$frame = temp_create_control($window, Frame, "",
 		$xpos, $ypos, $width, $height, ID, WBC_IMAGE);
 	wb_set_image($frame, $bmp);
 	wb_destroy_image($bmp);

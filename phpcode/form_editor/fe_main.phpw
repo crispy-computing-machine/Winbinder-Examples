@@ -114,7 +114,7 @@ function create_main_window()
 	// Set minimum window size
 
 	wb_set_area($wb->mainwin, WBC_MINSIZE, 0, 0, MIN_WIDTH, MIN_HEIGHT);
-	$wb->statusbar = _create_control($wb->mainwin, StatusBar, "");
+	$wb->statusbar = temp_create_control($wb->mainwin, StatusBar, "");
 
 	// Control arrays
 
@@ -170,7 +170,7 @@ function create_main_window()
 
 	// Create main menu
 
-	$wb->mainmenu = _create_control($wb->mainwin, Menu, array(
+	$wb->mainmenu = temp_create_control($wb->mainwin, Menu, array(
 
 		"&File",
 			array(ID_NEW,			"&New project\tCtrl+N", 	"", PATH_RES . "menu_new.bmp",	"Ctrl+N"),
@@ -229,11 +229,11 @@ function create_main_window()
 			array(ID_ABOUT,			"&About this program...")
 	));
 
-	_set_selected($wb->mainmenu, ID_TOOLBOX, true);
+	temp_set_selected($wb->mainmenu, ID_TOOLBOX, true);
 
 	// Create toolbar
 
-	$wb->toolbar = _create_control($wb->mainwin, ToolBar, array(
+	$wb->toolbar = temp_create_control($wb->mainwin, ToolBar, array(
 	  	null,
 	  	array(ID_NEW,			NULL, "New project (Ctrl+N)",		0),
 	  	array(ID_OPEN,			NULL, "Open project (Ctrl+O)",		1),
@@ -297,7 +297,7 @@ function create_main_window()
 	$winclasses = array();
 	foreach($wb->winclasses as $wclass)
 		$winclasses[] = $wclass[1];
-	_set_text(wb_get_control($wb->mainwin, IDC_CLASSES), $winclasses);
+	temp_set_text(wb_get_control($wb->mainwin, IDC_CLASSES), $winclasses);
 
 	// Initialize 'controls' TreeView
 
@@ -308,7 +308,7 @@ function create_main_window()
 	// Initialize 'styles' ListView
 
 	$wb->stylelist = wb_get_control($wb->mainwin, IDC_STYLES);
-	_set_text($wb->stylelist, array(array("Styles", 144)));
+	temp_set_text($wb->stylelist, array(array("Styles", 144)));
 	wb_set_style($wb->stylelist, WBC_CHECKBOXES);
 
 	// Set control ranges
@@ -403,7 +403,7 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 			if(wb_get_focus() != $ctrl) {	// Prevents cascading messages
 				break;
 			}
-			$text = _get_text($ctrl);
+			$text = temp_get_text($ctrl);
 			if($wb->form[$wb->currentform]->nselcontrol >= 0) {
 				$id = $wb->form[$wb->currentform]->ct[$wb->form[$wb->currentform]->nselcontrol]->id;
 				$wb->form[$wb->currentform]->ct[$wb->form[$wb->currentform]->nselcontrol]->id = $text;
@@ -420,23 +420,23 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 				$wb->form[$wb->currentform]->value = $value;
 			$vctrl = wb_get_control($wb->mainwin, IDC_VALUE);
 			if(wb_get_focus() != $vctrl)
-				_set_text($vctrl, sprintf($wb->showhex ? "#%08X" : "%d", $value));
+				temp_set_text($vctrl, sprintf($wb->showhex ? "#%08X" : "%d", $value));
 			wb_refresh($wb->formwin, false);
 			break;
 
 		case IDC_VALUE:			// This control is shown
 
 			if($wb->showhex)
-				$value = hexdec(_get_text($ctrl));
+				$value = hexdec(temp_get_text($ctrl));
 	 		else
-				$value = (int)_get_text($ctrl);
+				$value = (int)temp_get_text($ctrl);
 
 			if(wb_get_focus() == $ctrl)
-				_set_value(wb_get_control($wb->mainwin, IDC_VALUEAUX), $value);
+				temp_set_value(wb_get_control($wb->mainwin, IDC_VALUEAUX), $value);
 			break;
 
 		case IDC_CLASSES:
-			$winclass = _get_text($ctrl);
+			$winclass = temp_get_text($ctrl);
 			foreach($wb->winclasses as $wclass) {
 				if($wclass[1] == $winclass) {
 					$wb->form[$wb->currentform]->cclass = $wclass[0];
@@ -449,7 +449,7 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 			if(wb_get_focus() != $ctrl) {	// Prevents cascading messages
 				break;
 			}
-			$text = _get_text($ctrl);
+			$text = temp_get_text($ctrl);
 			if($wb->form[$wb->currentform]->nselcontrol >= 0) {
 				$wb->form[$wb->currentform]->ct[$wb->form[$wb->currentform]->nselcontrol]->caption = $text;
 				$id = $wb->form[$wb->currentform]->nselcontrol->id;
@@ -457,9 +457,9 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 			} else {
 				$wb->form[$wb->currentform]->caption = $text;
 				$id = null;
-				_set_text($wb->formwin, $text);
+				temp_set_text($wb->formwin, $text);
 			}
-			_set_text($wb->tree, $text ? str_replace("&", "", $text) : ($id ? $id : EMPTY_CAPTION), wb_get_selected($wb->tree));
+			temp_set_text($wb->tree, $text ? str_replace("&", "", $text) : ($id ? $id : EMPTY_CAPTION), wb_get_selected($wb->tree));
 			break;
 
 		case IDC_STYLES:
@@ -629,7 +629,7 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 
 			// Select the other control
 
-			_set_selected($wb->tree, $wb->form[$wb->currentform]->ct[$n + 1]->treenode);
+			temp_set_selected($wb->tree, $wb->form[$wb->currentform]->ct[$n + 1]->treenode);
 			update_control_data();
 			break;
 
@@ -650,7 +650,7 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 
 			// Select the other control
 
-			_set_selected($wb->tree, $wb->form[$wb->currentform]->ct[$n - 1]->treenode);
+			temp_set_selected($wb->tree, $wb->form[$wb->currentform]->ct[$n - 1]->treenode);
 			update_control_data();
 			break;
 
@@ -668,9 +668,9 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 			// Select another control
 
 			if($n > 0)
-				_set_selected($wb->tree, $wb->form[$wb->currentform]->ct[$n - 1]->treenode);
+				temp_set_selected($wb->tree, $wb->form[$wb->currentform]->ct[$n - 1]->treenode);
 			else
-				_set_selected($wb->tree, 0);
+				temp_set_selected($wb->tree, 0);
 
 			// Delete control
 
@@ -684,18 +684,18 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 				if(!wb_message_box($wb->mainwin, "Do you want to discard this project and create a new one?", APPNAME, WBC_QUESTION | WBC_YESNO))
 					break;
 			start_empty_project();
-			_set_text($window, APPNAME);
+			temp_set_text($window, APPNAME);
         	break;
 
         case ID_OPEN:
         	if($wb->numforms && $wb->form[$wb->currentform]->numcontrols)
 	        	if(!wb_message_box($wb->mainwin, "Do you want to discard this project and open another one?", APPNAME, WBC_QUESTION | WBC_YESNO))
 	        		break;
-			$filename = _sys_dlg_open($window, "Open Project", $wb->filefilter, $wb->filepath);
+			$filename = temp_sys_dlg_open($window, "Open Project", $wb->filefilter, $wb->filepath);
 			if($filename) {
 				start_empty_project();
 				read_project($filename);
-				_set_text($window, basename($filename) . " - " . APPNAME);
+				temp_set_text($window, basename($filename) . " - " . APPNAME);
 				$wb->proj_filename = $filename;
 				if($wb->autopath)
 					$wb->filepath = dirname($filename);
@@ -708,7 +708,7 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 					save_phpcode($wb->proj_filename);
 				save_project($wb->proj_filename);
 			} else {
-				$filename = _sys_dlg_save($window, "Save Project", $wb->filefilter, $wb->filepath, null, "prj");
+				$filename = temp_sys_dlg_save($window, "Save Project", $wb->filefilter, $wb->filepath, null, "prj");
 				if($filename) {
 					$wb->proj_filename = $filename;
 					if($wb->autophp)
@@ -727,7 +727,7 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
         	else
         		$path = $wb->filepath;
 
-			$filename = _sys_dlg_save($window, "Save Winbinder Project", $wb->filefilter, $path, basename($wb->proj_filename), "prj");
+			$filename = temp_sys_dlg_save($window, "Save Winbinder Project", $wb->filefilter, $path, basename($wb->proj_filename), "prj");
 			if($filename) {
 				$wb->proj_filename = $filename;
 				save_project($wb->proj_filename);
@@ -739,7 +739,7 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 			break;
 
         case ID_EXPORT:
-			$filename = _sys_dlg_save($window, "Export PHP Code", $wb->phpfilter, $wb->filepath, basename(str_replace(".prj", ".form.php", $wb->proj_filename)), "php");
+			$filename = temp_sys_dlg_save($window, "Export PHP Code", $wb->phpfilter, $wb->filepath, basename(str_replace(".prj", ".form.php", $wb->proj_filename)), "php");
 			if($filename) {
 				$wb->proj_filename = $filename;
 				save_phpcode($wb->proj_filename);
@@ -759,11 +759,11 @@ function process_main($window, $id, $ctrl, $lparam1=0, $lparam2=0)
 
 		case ID_TOOLBOX:
 			if($wb->classdlg) {
-				_set_selected($wb->mainmenu, $id, false);
+				temp_set_selected($wb->mainmenu, $id, false);
 				wb_destroy_window($wb->classdlg);
 				$wb->classdlg = null;
 			} else {
-				_set_selected($wb->mainmenu, $id, true);
+				temp_set_selected($wb->mainmenu, $id, true);
 				create_classes_dlg($window);
 			}
 			break;
@@ -870,7 +870,7 @@ function start_empty_project()
 	$wb->numforms = 0;
 	$wb->form = null;
 	$wb->currentform = -1;
-	_create_items($wb->tree, null, true);
+	temp_create_items($wb->tree, null, true);
 	$wb->rootnode = 0;
 	$wb->project = null;
 
@@ -926,7 +926,7 @@ function create_control($class, $caption, $width, $height, $left, $top, $id=null
 	// Create treeview item
 
 	$ct = $wb->form[$wb->currentform]->ct[$ncurrent];
-	$node = _create_items($wb->tree, array(
+	$node = temp_create_items($wb->tree, array(
 		array($ct->caption ? str_replace("&", "", $ct->caption) : ($ct->id ? $ct->id : EMPTY_CAPTION),
             $ncurrent,
             $wb->form[$wb->currentform]->treenode,
@@ -934,7 +934,7 @@ function create_control($class, $caption, $width, $height, $left, $top, $id=null
             2
         )
 	));
-	_set_selected($wb->tree, $node);
+	temp_set_selected($wb->tree, $node);
 
 	$wb->form[$wb->currentform]->ct[$ncurrent]->treenode = $node;
 	$wb->form[$wb->currentform]->nselcontrol = $ncurrent;
@@ -966,25 +966,25 @@ function update_control_data($force=false)
 			wb_set_enabled(wb_get_control($wb->toolbar, $id), false);
 
 		$id = wb_get_control($wb->mainwin, IDC_ID);
-		_set_text($id, "");
+		temp_set_text($id, "");
 		$class = $wb->form[$wb->currentform]->cclass;
 		$styles = $form->style;
 		$size = wb_get_size($wb->formwin);
-		_set_text(wb_get_control($wb->mainwin, IDC_VALUEAUX), $wb->form[$wb->currentform]->value);
-		_set_text(wb_get_control($wb->mainwin, IDC_WIDTH), $size[0]);
-		_set_text(wb_get_control($wb->mainwin, IDC_HEIGHT), $size[1]);
-		_set_text(wb_get_control($wb->mainwin, IDC_CAPTION), _get_text($wb->formwin));
-		_set_text(wb_get_control($wb->mainwin, IDC_TOP), 0);
-		_set_text(wb_get_control($wb->mainwin, IDC_LEFT), 0);
-		_set_selected($wb->tree, $wb->form[$wb->currentform]->treenode);
-		_set_text($wb->statusbar, $class . ' "' . $wb->form[$wb->currentform]->caption . '"');
+		temp_set_text(wb_get_control($wb->mainwin, IDC_VALUEAUX), $wb->form[$wb->currentform]->value);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_WIDTH), $size[0]);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_HEIGHT), $size[1]);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_CAPTION), temp_get_text($wb->formwin));
+		temp_set_text(wb_get_control($wb->mainwin, IDC_TOP), 0);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_LEFT), 0);
+		temp_set_selected($wb->tree, $wb->form[$wb->currentform]->treenode);
+		temp_set_text($wb->statusbar, $class . ' "' . $wb->form[$wb->currentform]->caption . '"');
 
 		// Select class in combo box
 
 		wb_set_visible(wb_get_control($wb->mainwin, IDC_CLASS), false);
 		for($i = 0; $i < count($wb->winclasses); $i++) {
 			if($wb->winclasses[$i][0] == $class)
-				_set_selected(wb_get_control($wb->mainwin, IDC_CLASSES), $i);
+				temp_set_selected(wb_get_control($wb->mainwin, IDC_CLASSES), $i);
 		}
 		wb_set_visible(wb_get_control($wb->mainwin, IDC_CLASSES), true);
 
@@ -1006,18 +1006,18 @@ function update_control_data($force=false)
 		wb_set_enabled($forwards, ($ncurrent < $form->numcontrols - 1));
 		wb_set_enabled($backwards, ($ncurrent >= 1));
 		$id = wb_get_control($wb->mainwin, IDC_ID);
-		_set_text($id, (string)$ct->id);
-		_set_text(wb_get_control($wb->mainwin, IDC_CAPTION), $ct->caption);
-		_set_text(wb_get_control($wb->mainwin, IDC_VALUEAUX), $ct->value);
-		_set_text(wb_get_control($wb->mainwin, IDC_TOP), $ct->top);
-		_set_text(wb_get_control($wb->mainwin, IDC_LEFT), $ct->left);
-		_set_text(wb_get_control($wb->mainwin, IDC_WIDTH), $ct->width);
-		_set_text(wb_get_control($wb->mainwin, IDC_HEIGHT), $ct->height);
+		temp_set_text($id, (string)$ct->id);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_CAPTION), $ct->caption);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_VALUEAUX), $ct->value);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_TOP), $ct->top);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_LEFT), $ct->left);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_WIDTH), $ct->width);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_HEIGHT), $ct->height);
 		wb_set_visible(wb_get_control($wb->mainwin, IDC_CLASS), true);
-		_set_text(wb_get_control($wb->mainwin, IDC_CLASS), $class);
+		temp_set_text(wb_get_control($wb->mainwin, IDC_CLASS), $class);
 		wb_set_visible(wb_get_control($wb->mainwin, IDC_CLASSES), false);
-		_set_selected($wb->tree, $ct->treenode);
-		_set_text($wb->statusbar, $class . ' "' . str_replace("&", "", $ct->caption) . '" (' . $ct->id . ')');
+		temp_set_selected($wb->tree, $ct->treenode);
+		temp_set_text($wb->statusbar, $class . ' "' . str_replace("&", "", $ct->caption) . '" (' . $ct->id . ')');
 	}
 	wb_set_enabled(wb_get_control($wb->toolbar, ID_SAVE), $form->numcontrols > 0);
 
@@ -1027,10 +1027,10 @@ function update_control_data($force=false)
 
 		wb_delete_items($wb->stylelist, null);
 		$stylelist = get_class_styles($class);
-		_create_items($wb->stylelist, $stylelist);
+		temp_create_items($wb->stylelist, $stylelist);
 		for($i = 0; $i < count($stylelist); $i++) {
 			if($styles & $stylelist[$i][1])
-				_set_value($wb->stylelist, $i, true);
+				temp_set_value($wb->stylelist, $i, true);
 		}
 	}
 
@@ -1086,11 +1086,11 @@ function swap_controls($index_curr, $index_next)
 
 	// Swap treeview icons
 
-	_set_text($wb->tree, $next->caption ? str_replace("&", "", $next->caption) : ($next->id ? $next->id : EMPTY_CAPTION), $curr->treenode);
-	_set_text($wb->tree, $curr->caption ? str_replace("&", "", $curr->caption) : ($curr->id ? $curr->id : EMPTY_CAPTION), $next->treenode);
+	temp_set_text($wb->tree, $next->caption ? str_replace("&", "", $next->caption) : ($next->id ? $next->id : EMPTY_CAPTION), $curr->treenode);
+	temp_set_text($wb->tree, $curr->caption ? str_replace("&", "", $curr->caption) : ($curr->id ? $curr->id : EMPTY_CAPTION), $next->treenode);
 
-	_set_value($wb->tree, $next->id, $curr->treenode);
-	_set_value($wb->tree, $curr->id, $next->treenode);
+	temp_set_value($wb->tree, $next->id, $curr->treenode);
+	temp_set_value($wb->tree, $curr->id, $next->treenode);
 }
 
 /* Return an array of styles according to $class */
@@ -1243,7 +1243,7 @@ function set_default_accel($window=null, $main=true)
 	$window = $window ? $window : $wb->mainwin;
 
 	if($main) {
-		_create_control($window, Accel, array(
+		temp_create_control($window, Accel, array(
 			array(ID_NEW,		'ctrl+N'),
 			array(ID_OPEN,		'ctrl+O'),
 			array(ID_SAVE,		'ctrl+S'),
@@ -1258,7 +1258,7 @@ function set_default_accel($window=null, $main=true)
 			array(ID_BACKWARDS,	'ctrl+PgUp'),
 		));
 	} else {
-		_create_control($window, Accel, array(
+		temp_create_control($window, Accel, array(
 			array(IDCANCEL,		'esc'),
 			array(IDOK,			'enter'),
 		));

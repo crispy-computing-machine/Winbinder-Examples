@@ -39,15 +39,15 @@ include PATH_INC . "winbinder.php";
 
 $mainwin = wb_create_window(0, AppWindow, APPNAME, WBC_CENTER, WBC_CENTER, 300, 200, WBC_NOTIFY);
 
-_create_control($mainwin, PushButton, 'Start WAV', 20, 20, 120, 22, ID_STARTWAV);
-_create_control($mainwin, PushButton, 'Loop WAV',  20, 50, 120, 22, ID_LOOPWAV);
-_create_control($mainwin, PushButton, 'Stop WAV',  20, 80, 120, 22, ID_STOPWAV);
-_create_control($mainwin, PushButton, 'Stop all',  20,110, 120, 22, ID_STOPALL);
+temp_create_control($mainwin, PushButton, 'Start WAV', 20, 20, 120, 22, ID_STARTWAV);
+temp_create_control($mainwin, PushButton, 'Loop WAV',  20, 50, 120, 22, ID_LOOPWAV);
+temp_create_control($mainwin, PushButton, 'Stop WAV',  20, 80, 120, 22, ID_STOPWAV);
+temp_create_control($mainwin, PushButton, 'Stop all',  20,110, 120, 22, ID_STOPALL);
 
-_create_control($mainwin, PushButton, 'Synchronous',150, 20, 120, 22, ID_STARTSYNC);
-_create_control($mainwin, PushButton, 'Start MIDI', 150, 50, 120, 22, ID_STARTMIDI);
-_create_control($mainwin, PushButton, 'Stop MIDI',  150, 80, 120, 22, ID_STOPMIDI);
-_create_control($mainwin, PushButton, 'System',     150,110, 120, 22, ID_SYSTEM);
+temp_create_control($mainwin, PushButton, 'Synchronous',150, 20, 120, 22, ID_STARTSYNC);
+temp_create_control($mainwin, PushButton, 'Start MIDI', 150, 50, 120, 22, ID_STARTMIDI);
+temp_create_control($mainwin, PushButton, 'Stop MIDI',  150, 80, 120, 22, ID_STOPMIDI);
+temp_create_control($mainwin, PushButton, 'System',     150,110, 120, 22, ID_SYSTEM);
 
 $wavfile = PATH_RES . 'click1.wav';
 $wavfile2 = PATH_RES . 'fx2.wav';

@@ -52,10 +52,10 @@ draw_on_window($mainwin, WIDTH, HEIGHT);
 
 // Create the Minimize and Close buttons
 
-$btn = _create_control($mainwin, PushButton, "",	WIDTH - 44, 5, 20, 20, ID_MINIMIZE, WBC_IMAGE);
+$btn = temp_create_control($mainwin, PushButton, "",	WIDTH - 44, 5, 20, 20, ID_MINIMIZE, WBC_IMAGE);
 wb_set_image($btn, wb_load_image(PATH_RES . 'dn_arrow.bmp'), GREEN);
 
-$btn = _create_control($mainwin, PushButton, "",	WIDTH - 22, 5, 20, 20, IDCLOSE, WBC_IMAGE);
+$btn = temp_create_control($mainwin, PushButton, "",	WIDTH - 22, 5, 20, 20, IDCLOSE, WBC_IMAGE);
 wb_set_image($btn, wb_load_image(PATH_RES . 'cancel.bmp'), LIGHTGRAY);
 
 // Create other controls with ImageButtons
@@ -63,17 +63,17 @@ wb_set_image($btn, wb_load_image(PATH_RES . 'cancel.bmp'), LIGHTGRAY);
 $states = wb_load_image(PATH_RES . 'states.bmp');
 $ypos = CAPTION_HEIGHT + 10;
 
-$btn = _create_control($mainwin, ImageButton, "Button 1",  6, $ypos, 32, 32, 0, WBC_IMAGE);
+$btn = temp_create_control($mainwin, ImageButton, "Button 1",  6, $ypos, 32, 32, 0, WBC_IMAGE);
 wb_set_image($btn, $states, GREEN);
-$btn = _create_control($mainwin, ImageButton, "Button 2",	38, $ypos, 32, 32, 0, WBC_IMAGE);
+$btn = temp_create_control($mainwin, ImageButton, "Button 2",	38, $ypos, 32, 32, 0, WBC_IMAGE);
 wb_set_image($btn, $states);
-$btn = _create_control($mainwin, ImageButton, "Button 3",	70, $ypos, 32, 32, 0, WBC_IMAGE);
+$btn = temp_create_control($mainwin, ImageButton, "Button 3",	70, $ypos, 32, 32, 0, WBC_IMAGE);
 wb_set_image($btn, $states);
-$btn = _create_control($mainwin, ImageButton, "Button 4",100, $ypos, 32, 32, 0, WBC_IMAGE);
+$btn = temp_create_control($mainwin, ImageButton, "Button 4",100, $ypos, 32, 32, 0, WBC_IMAGE);
 wb_set_image($btn, $states);
-$btn = _create_control($mainwin, ImageButton, "Button 5",132, $ypos, 32, 32, 0, WBC_IMAGE);
+$btn = temp_create_control($mainwin, ImageButton, "Button 5",132, $ypos, 32, 32, 0, WBC_IMAGE);
 wb_set_image($btn, $states);
-$btn = _create_control($mainwin, ImageButton, "Button 6",164, $ypos, 32, 32, 0, WBC_IMAGE);
+$btn = temp_create_control($mainwin, ImageButton, "Button 6",164, $ypos, 32, 32, 0, WBC_IMAGE);
 wb_set_image($btn, $states);
 
 wb_destroy_image($btn);
@@ -125,7 +125,7 @@ function draw_on_window($window, $width, $height)
 
 	// Create a Frame control that occupies the whole window
 
-	$frame = _create_control($window, Frame, "", 0, 0, $width, $height, 0, WBC_IMAGE);
+	$frame = temp_create_control($window, Frame, "", 0, 0, $width, $height, 0, WBC_IMAGE);
 
 	// Assign the bitmap to it, then destroy the original bitmap
 

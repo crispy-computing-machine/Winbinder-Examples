@@ -30,9 +30,9 @@ define("GRACE", 1);
 // Create main window, then assign a procedure to it
 
 $mainwin = wb_create_window(0, PopupWindow, "WB leak monitor", 420, 260);
-$label = _create_control($mainwin, Label, "", 10, 10, 400, 160, 0);
+$label = temp_create_control($mainwin, Label, "", 10, 10, 400, 160, 0);
 //$test = _create_control($mainwin, PushButton, "Test", 10, 200, 120, 22, 201);
-_create_control($mainwin, PushButton, "Reset", 140, 200, 120, 22, 202);
+temp_create_control($mainwin, PushButton, "Reset", 140, 200, 120, 22, 202);
 wb_set_handler($mainwin, "process_main");
 wb_create_timer($mainwin, 201, TIMER);
 wb_main_loop();
@@ -84,10 +84,10 @@ function process_main($window, $id)
 					$freemem / (1024 * 1024)
 				);
 
-				_set_text($label, $text);
+				temp_set_text($label, $text);
 
 			} else
-				_set_text($label, "Please wait...");
+				temp_set_text($label, "Please wait...");
 			$count++;
 			break;
 

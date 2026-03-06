@@ -44,14 +44,14 @@ function process_prior($window, $id)
 			break;
 
 		case ID_NEWITEM:
-			$name = _get_text(wb_get_control($window, ID_NAME));
+			$name = temp_get_text(wb_get_control($window, ID_NAME));
 			db_edit_record($prior_table, 0, "name", array($name));
 			update_priors($window);
 			update_prior_controls($window);
 			break;
 
 		case ID_SETITEM:
-			$name = _get_text(wb_get_control($window, ID_NAME));
+			$name = temp_get_text(wb_get_control($window, ID_NAME));
 			$itemlist = wb_get_control($window, ID_PRIORITYLIST);
 			$id = db_get_id($prior_table, wb_get_selected($itemlist));
 			db_edit_record($prior_table, $id, "name", array($name));
@@ -103,7 +103,7 @@ function update_priors($window)
 	global $prior_table;
 
 	$itemlist = wb_get_control($window, ID_PRIORITYLIST);
-	_set_text($itemlist, db_get_data($prior_table, null, "name"));
+	temp_set_text($itemlist, db_get_data($prior_table, null, "name"));
 }
 
 /* Update controls */
@@ -115,7 +115,7 @@ function update_prior_controls($window)
 	$itemlist = wb_get_control($window, ID_PRIORITYLIST);
 
 	$id = db_get_id($prior_table, wb_get_selected($itemlist));
-	_set_text(wb_get_control($window, ID_NAME),
+	temp_set_text(wb_get_control($window, ID_NAME),
 		db_get_data($prior_table, $id, "name"));
 
 	$sel = wb_get_selected($itemlist);

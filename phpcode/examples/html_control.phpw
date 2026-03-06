@@ -70,7 +70,7 @@ function create_main_window()
 
 	// Create main menu
 
-	$mainmenu = _create_control($mainwin, Menu, array(
+	$mainmenu = temp_create_control($mainwin, Menu, array(
 
 		"&File",
 			null,
@@ -101,7 +101,7 @@ function create_main_window()
 
 	// Create toolbar
 
-	$toolbar = _create_control($mainwin, ToolBar, array(
+	$toolbar = temp_create_control($mainwin, ToolBar, array(
 		null,
 		array(ID_BACK,		NULL, "Go Back",	0),
 		array(ID_FORWARD,	NULL, "Go Forward",	1),
@@ -116,9 +116,9 @@ function create_main_window()
 
 	// Create HTML control and others
 
-	$hwnd_html = _create_control($mainwin, HTMLControl, "", 0, 30, 765, 460);
-	$ctrl_url = _create_control($toolbar, EditBox, PAGE_HOME, 190, 3, 580, 20, ID_URL);
-	$statusbar = _create_control($mainwin, StatusBar, "");
+	$hwnd_html = temp_create_control($mainwin, HTMLControl, "", 0, 30, 765, 460);
+	$ctrl_url = temp_create_control($toolbar, EditBox, PAGE_HOME, 190, 3, 580, 20, ID_URL);
+	$statusbar = temp_create_control($mainwin, StatusBar, "");
 
 	// Almost finished
 
@@ -157,9 +157,9 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 
 		case ID_TIMER:
 			if(wb_set_location($hwnd_html, "cmd:busy"))
-				_set_text($statusbar, "Loading page, please wait...");
+				temp_set_text($statusbar, "Loading page, please wait...");
 			else
-				_set_text($statusbar, "Ready (" . (wb_get_system_info("appmemory") / 1024) . " kB)");
+				temp_set_text($statusbar, "Ready (" . (wb_get_system_info("appmemory") / 1024) . " kB)");
 //				_set_text($statusbar, "Ready");
 			break;
 
@@ -177,38 +177,38 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 			break;
 
 		case ID_OPEN:
-			$filename = _sys_dlg_open($window, "Open document", $file_filter);
+			$filename = temp_sys_dlg_open($window, "Open document", $file_filter);
 			if($filename)
-				_set_text($hwnd_html, $filename);
+				temp_set_text($hwnd_html, $filename);
 			break;
 
 		case ID_BLANK:
 			wb_set_location($hwnd_html, "cmd:blank");
-			_set_text($ctrl_url, "");
+			temp_set_text($ctrl_url, "");
 			break;
 
 		case ID_SEARCH:			// Not using the browser function here
 			wb_set_location($hwnd_html, PAGE_SEARCH);
-			_set_text($ctrl_url, PAGE_SEARCH);
+			temp_set_text($ctrl_url, PAGE_SEARCH);
 			break;
 
 		case ID_HOME:			// Not using the browser function here
 			wb_set_location($hwnd_html, PAGE_HOME);
-			_set_text($ctrl_url, PAGE_HOME);
+			temp_set_text($ctrl_url, PAGE_HOME);
 			break;
 
 		case ID_WEBSITE:
 			wb_set_location($hwnd_html, PAGE_WEBSITE);
-			_set_text($ctrl_url, PAGE_WEBSITE);
+			temp_set_text($ctrl_url, PAGE_WEBSITE);
 			break;
 
 		case ID_FORUM:
 			wb_set_location($hwnd_html, PAGE_FORUM);
-			_set_text($ctrl_url, PAGE_FORUM);
+			temp_set_text($ctrl_url, PAGE_FORUM);
 			break;
 
 		case ID_GO:
-			wb_set_location($hwnd_html, _get_text($ctrl_url));
+			wb_set_location($hwnd_html, temp_get_text($ctrl_url));
 			break;
 
 		case ID_ABOUT:
@@ -229,8 +229,8 @@ function create_about_box($parent)
 	$text = APPNAME . "\r\n\r\nWinBinder version: " . WBC_VERSION . "\r\nPHP version: " . PHP_VERSION .
 		"\r\n" . wb_get_system_info("osversion");
 
-	_create_control($about, Label, $text, 20, 20, 200, 80, 0, WBC_MULTILINE | WBC_READONLY);
-	_create_control($about, PushButton, "Close",  80, 120, 80, 22, IDCANCEL);
+	temp_create_control($about, Label, $text, 20, 20, 200, 80, 0, WBC_MULTILINE | WBC_READONLY);
+	temp_create_control($about, PushButton, "Close",  80, 120, 80, 22, IDCANCEL);
 }
 
 function process_about($window, $id)

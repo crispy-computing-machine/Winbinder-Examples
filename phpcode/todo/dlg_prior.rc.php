@@ -17,16 +17,16 @@ $dlg = wb_create_window($parent, 2, "Edit Priorities", WBC_CENTER, WBC_CENTER, 3
 
 // Insert controls
 
-$_tmp_ctrl_ = _create_control($dlg, PushButton, "up_arrow.bmp", 178, 65, 20, 21, ID_MOVEUP, WBC_VISIBLE | WBC_ENABLED, 0);
+$_tmp_ctrl_ = temp_create_control($dlg, PushButton, "up_arrow.bmp", 178, 65, 20, 21, ID_MOVEUP, WBC_VISIBLE | WBC_ENABLED, 0);
 wb_set_image($_tmp_ctrl_, 'C:\@desenv\WinBinder\phpcode\todo/../resources/up_arrow.bmp', GREEN); unset($_tmp_ctrl_);
-$_tmp_ctrl_ = _create_control($dlg, PushButton, "dn_arrow.bmp", 205, 65, 20, 21, ID_MOVEDOWN, WBC_VISIBLE | WBC_ENABLED, 0);
+$_tmp_ctrl_ = temp_create_control($dlg, PushButton, "dn_arrow.bmp", 205, 65, 20, 21, ID_MOVEDOWN, WBC_VISIBLE | WBC_ENABLED, 0);
 wb_set_image($_tmp_ctrl_, 'C:\@desenv\WinBinder\phpcode\todo/../resources/dn_arrow.bmp', GREEN); unset($_tmp_ctrl_);
-_create_control($dlg, EditBox, "", 178, 8, 146, 21, ID_NAME, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "&Close", 250, 238, 74, 24, IDCANCEL, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "&New", 4, 238, 74, 24, ID_NEWITEM, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "&Delete", 88, 238, 74, 24, ID_DELETEITEM, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "&Set", 169, 238, 74, 24, ID_SETITEM, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, ListBox, "", 4, 6, 166, 224, ID_PRIORITYLIST, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, EditBox, "", 178, 8, 146, 21, ID_NAME, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "&Close", 250, 238, 74, 24, IDCANCEL, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "&New", 4, 238, 74, 24, ID_NEWITEM, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "&Delete", 88, 238, 74, 24, ID_DELETEITEM, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "&Set", 169, 238, 74, 24, ID_SETITEM, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, ListBox, "", 4, 6, 166, 224, ID_PRIORITYLIST, WBC_VISIBLE | WBC_ENABLED, 0);
 
 // End controls
 

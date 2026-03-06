@@ -31,9 +31,9 @@ define("APPNAME", 	"WinBinder version ". WBC_VERSION . ": System information");
 // NOTE: This kind of application does not need a window handler function
 
 $mainwin = wb_create_window(0, PopupWindow, APPNAME, 550, 400);
-$list = _create_control($mainwin, ListView, "", 0, 0, 543, 375, 101, WBC_LINES | WBC_READONLY);
+$list = temp_create_control($mainwin, ListView, "", 0, 0, 543, 375, 101, WBC_LINES | WBC_READONLY);
 
-_set_text($list, array(
+temp_set_text($list, array(
 	array("", 25),
 	array("Parameter", 100),
 	array("Current value", 408)));
@@ -66,7 +66,7 @@ $params = array(
 
 $count = 0;
 foreach($params as $param)
-	_create_items($list, array(array(@++$count, $param, wb_get_system_info($param))));
+	temp_create_items($list, array(array(@++$count, $param, wb_get_system_info($param))));
 
 wb_main_loop();                                                 // Enter message loop
 

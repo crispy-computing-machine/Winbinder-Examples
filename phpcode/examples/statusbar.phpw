@@ -49,18 +49,18 @@ function create_main_window()
 	$mainwin = wb_create_window(0, ResizableWindow, APPNAME, WBC_CENTER, WBC_CENTER, 550, 200,
 	  WBC_NOTIFY, WBC_DBLCLICK);
 
-	_create_control($mainwin, PushButton, 'One segment',		20, 20, 120, 24, IDC_ONE);
-	_create_control($mainwin, PushButton, 'Two segments',		20, 50, 120, 24, IDC_TWO);
-	_create_control($mainwin, PushButton, 'Six segments',		20, 80, 120, 24, IDC_SIX);
-	_create_control($mainwin, PushButton, 'Set 2nd segment',	20,110, 120, 24, IDC_SET);
+	temp_create_control($mainwin, PushButton, 'One segment',		20, 20, 120, 24, IDC_ONE);
+	temp_create_control($mainwin, PushButton, 'Two segments',		20, 50, 120, 24, IDC_TWO);
+	temp_create_control($mainwin, PushButton, 'Six segments',		20, 80, 120, 24, IDC_SIX);
+	temp_create_control($mainwin, PushButton, 'Set 2nd segment',	20,110, 120, 24, IDC_SET);
 
 	wb_set_handler($mainwin, 'process_main');
 
 	// Create the status bar
 
-	$statusbar = _create_control($mainwin, StatusBar, "Press a button");
+	$statusbar = temp_create_control($mainwin, StatusBar, "Press a button");
 
-	_create_items($statusbar, array(
+	temp_create_items($statusbar, array(
 		array('This has 120 pixels', 120),
 		array('', 20),
 		array('Just enough for this text', null),
@@ -78,20 +78,20 @@ function process_main($window, $id, $ctrl=0, $lparam=0)
 	switch($id) {
 
 		case IDC_ONE:
-			_create_items($statusbar, array(
+			temp_create_items($statusbar, array(
 				array('One segment only: this is the default.'),
 			));
 			break;
 
 		case IDC_TWO:
-			_create_items($statusbar, array(
+			temp_create_items($statusbar, array(
 				array('', 80),
 				array('This bar has two segments.'),
 			));
 			break;
 
 		case IDC_SIX:
-			_create_items($statusbar, array(
+			temp_create_items($statusbar, array(
 				array('This bar has six segments.'),
 				array('Auto'),
 				array('Auto'),
@@ -102,7 +102,7 @@ function process_main($window, $id, $ctrl=0, $lparam=0)
 			break;
 
 		case IDC_SET:
-			_set_text($statusbar, '2nd seg', 1);
+			temp_set_text($statusbar, '2nd seg', 1);
 			break;
 
 		case IDCLOSE:

@@ -60,7 +60,7 @@ wb_set_handler($mainwin, "process_main");
 wb_set_image($mainwin, PATH_RES . "hyper.ico");
 
 // Create menu
-_create_control($mainwin, Menu, array(
+temp_create_control($mainwin, Menu, array(
 	"&File",
 		array(ID_WEBSITE,	"&Web site"),
 		array(IDCLOSE,		"E&xit\tAlt+F4",			null, PATH_RES . "menu_exit.bmp"),
@@ -75,7 +75,7 @@ _create_control($mainwin, Menu, array(
 
 // Create toolbar
 
-_create_control($mainwin, ToolBar, array(
+temp_create_control($mainwin, ToolBar, array(
 	null,
 	array(ID_RELNOTES,	NULL, "&Release notes",			0),
 	array(ID_CHANGELOG,	NULL, "&Changelog",				23),
@@ -86,11 +86,11 @@ _create_control($mainwin, ToolBar, array(
 	array(ID_ABOUT, 	NULL, "About this application",	19),
 ), 0, 0, 16, 15, 0, 0, PATH_RES . "toolbar.bmp");
 
-_create_control($mainwin, Frame, "", 0, 28, 320, 2);
+temp_create_control($mainwin, Frame, "", 0, 28, 320, 2);
 
 // Create label
 
-_create_control($mainwin, Label, WELCOME_TEXT, 15, 40, 290, 80, ID_LABEL, WBC_LEFT | WBC_MULTILINE);
+temp_create_control($mainwin, Label, WELCOME_TEXT, 15, 40, 290, 80, ID_LABEL, WBC_LEFT | WBC_MULTILINE);
 wb_set_font(wb_get_control($mainwin, ID_LABEL), wb_create_font("Verdana", 9, null, FTA_NORMAL));
 
 // Create buttons
@@ -110,7 +110,7 @@ $buttons = array(
 $nbuttons = count($buttons);
 
 for($i = 0; $i < $nbuttons; $i++) {
-	_create_control($mainwin, PushButton, $buttons[$i][1], 80, 115 + 25 * $i, 150, 22, $buttons[$i][0]);
+	temp_create_control($mainwin, PushButton, $buttons[$i][1], 80, 115 + 25 * $i, 150, 22, $buttons[$i][0]);
 }
 
 wb_set_size($mainwin, 320, 180 + 25 * $nbuttons);

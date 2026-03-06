@@ -7,9 +7,10 @@
  * Copyright Hypervisual - see LICENSE.TXT for details
  * Author: Rubem Pechansky (https://github.com/crispy-computing-machine/Winbinder)
  *
- * Refactor the below functions that begin with _ into your own Winbinder library
- * Temp functions no longer exist.
+ * !!! Refactor the below functions that begin with temp_ into your own Winbinder library !!!!
+ *
  *******************************************************************************/
+
 //------------------------------------------------------------- WINDOW FUNCTIONS
 
 /**
@@ -27,7 +28,7 @@
  * @param $ntab
  * @return int
  */
-function _create_control($parent, $class, $caption = "", $xpos = 0, $ypos = 0, $width = 0, $height = 0, $id = null, $style = 0, $lparam = null, $ntab = 0)
+function temp_create_control($parent, $class, $caption = "", $xpos = 0, $ypos = 0, $width = 0, $height = 0, $id = null, $style = 0, $lparam = null, $ntab = 0)
 {
     switch ($class) {
 
@@ -49,13 +50,13 @@ function _create_control($parent, $class, $caption = "", $xpos = 0, $ypos = 0, $
         case ListView:
             $ctrl = wb_create_control($parent, $class, $caption, $xpos, $ypos, $width, $height, $id, $style, $lparam, $ntab);
             if (is_array($caption))
-                _set_text($ctrl, $caption[0]);
+                temp_set_text($ctrl, $caption[0]);
             return $ctrl;
 
         case TreeView:
             $ctrl = wb_create_control($parent, $class, $caption, $xpos, $ypos, $width, $height, $id, $style, $lparam, $ntab);
             if (is_array($caption))
-                _set_text($ctrl, $caption[0]);
+                temp_set_text($ctrl, $caption[0]);
             return $ctrl;
 
         case Gauge:
@@ -63,7 +64,7 @@ function _create_control($parent, $class, $caption = "", $xpos = 0, $ypos = 0, $
         case ScrollBar:
             $ctrl = wb_create_control($parent, $class, $caption, $xpos, $ypos, $width, $height, $id, $style, $lparam, $ntab);
             if ($lparam)
-                _set_value($ctrl, $lparam);
+                temp_set_value($ctrl, $lparam);
             return $ctrl;
 
         default:
@@ -78,7 +79,7 @@ function _create_control($parent, $class, $caption = "", $xpos = 0, $ypos = 0, $
  * @param $item
  * @return int|void|null
  */
-function _set_value($ctrl, $value, $item = null)
+function temp_set_value($ctrl, $value, $item = null)
 {
     if (!$ctrl)
         return null;
@@ -122,7 +123,7 @@ function _set_value($ctrl, $value, $item = null)
  * @param $subitem
  * @return array|int|mixed|null
  */
-function _get_text($ctrl, $item = null, $subitem = null)
+function temp_get_text($ctrl, $item = null, $subitem = null)
 {
     if (!$ctrl)
         return null;
@@ -198,7 +199,7 @@ function _get_text($ctrl, $item = null, $subitem = null)
  * @param $subitem
  * @return array|bool|int|mixed|void|null
  */
-function _set_text($ctrl, $text, $item = null, $subitem = null)
+function temp_set_text($ctrl, $text, $item = null, $subitem = null)
 {
     if (!$ctrl)
         return null;
@@ -306,7 +307,7 @@ function _set_text($ctrl, $text, $item = null, $subitem = null)
             if ($item)
                 return wb_set_treeview_item_text($ctrl, $item, $text);
             else
-                return _create_items($ctrl, $text, true);
+                return temp_create_items($ctrl, $text, true);
 
         default:
             // The (string) cast below works well but is a temporary fix, must be
@@ -325,7 +326,7 @@ function _set_text($ctrl, $text, $item = null, $subitem = null)
  * @param $selected
  * @return bool|int
  */
-function _set_selected($ctrl, $selitems = 0, $selected = TRUE)
+function temp_set_selected($ctrl, $selitems = 0, $selected = TRUE)
 {
     switch (wb_get_class($ctrl)) {
 
@@ -374,7 +375,7 @@ function _set_selected($ctrl, $selitems = 0, $selected = TRUE)
  * @param $param
  * @return array|int|mixed|true|void
  */
-function _create_items($ctrl, $items, $clear = false, $param = null)
+function temp_create_items($ctrl, $items, $clear = false, $param = null)
 {
     switch (wb_get_class($ctrl)) {
 
@@ -437,7 +438,7 @@ function _create_items($ctrl, $items, $clear = false, $param = null)
         case StatusBar:
             wb_create_statusbar_items($ctrl, $items, $clear, $param);
             foreach ($items as $item) {
-                _set_text($ctrl, $item[0], key($item));
+                temp_set_text($ctrl, $item[0], key($item));
             }
             return true;
 
@@ -463,7 +464,7 @@ function _create_items($ctrl, $items, $clear = false, $param = null)
  * @param $flags
  * @return mixed
  */
-function _sys_dlg_open($parent = null, $title = null, $filter = null, $path = null, $filename = null, $flags = null)
+function temp_sys_dlg_open($parent = null, $title = null, $filter = null, $path = null, $filename = null, $flags = null)
 {
     $filter = _make_file_filter($filter ? $filter : $filename);
     return wb_sys_dlg_open($parent, $title, $filter, $path, $flags);
@@ -480,7 +481,7 @@ function _sys_dlg_open($parent = null, $title = null, $filter = null, $path = nu
  * @param $defext
  * @return mixed
  */
-function _sys_dlg_save($parent = null, $title = null, $filter = null, $path = null, $filename = null, $defext = null)
+function temp_sys_dlg_save($parent = null, $title = null, $filter = null, $path = null, $filename = null, $defext = null)
 {
     $filter = _make_file_filter($filter ? $filter : $filename);
 

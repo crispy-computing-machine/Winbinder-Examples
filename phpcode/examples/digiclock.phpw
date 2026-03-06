@@ -20,12 +20,12 @@ wb_set_handler($mainwin, "process_main");
 
 // Create label control inside the window
 
-$label = _create_control($mainwin, Label, date("h:i:s A"), 0, 12, 112, 20, 0, WBC_CENTER);
+$label = temp_create_control($mainwin, Label, date("h:i:s A"), 0, 12, 112, 20, 0, WBC_CENTER);
 wb_set_font($label, wb_create_font("Tahoma", 11, null, FTA_BOLD));
 
 // Create status bar
 
-$statusbar = _create_control($mainwin, StatusBar, date(SHORT_FMT));
+$statusbar = temp_create_control($mainwin, StatusBar, date(SHORT_FMT));
 wb_set_font($statusbar, wb_create_font("Courier New", 8));
 
 // Create the timer
@@ -51,13 +51,13 @@ function process_main($window, $id)
 
 			// Show the current time in hours, minutes and seconds
 
-			_set_text($label, date(SHORT_FMT));
+			temp_set_text($label, date(SHORT_FMT));
 
 			// Truncate text
 
 			$text = date(LONG_FMT);
 			$len = strlen($text);
-			_set_text($statusbar, substr($text . $text, $pos ?? 0, $len));
+			temp_set_text($statusbar, substr($text . $text, $pos ?? 0, $len));
 			$pos = $pos < $len ? $pos + 1 : 0;
 			break;
 

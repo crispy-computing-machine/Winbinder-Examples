@@ -43,23 +43,23 @@ init_serial();
 $mainwin = wb_create_window(0, AppWindow, APPNAME, 540, 340);
 wb_set_handler($mainwin, "process_main");
 
-$term = _create_control($mainwin, EditBox, "", 0, 28, 532, 243, 101, WBC_MULTILINE | WBC_READONLY);
+$term = temp_create_control($mainwin, EditBox, "", 0, 28, 532, 243, 101, WBC_MULTILINE | WBC_READONLY);
 
 // Create menu, toolbar, statusbar
 
-_create_control($mainwin, Menu, array(
+temp_create_control($mainwin, Menu, array(
     "&File",
         array(IDCLOSE,  "E&xit\\tAlt+F4",    NULL, PATH_RES . "menu_exit.bmp"),
 ));
 
-_create_control($mainwin, ToolBar, array(
+temp_create_control($mainwin, ToolBar, array(
     null,
     array(ID_TEST,  NULL,   "Test serial port",      22),
     null,
     array(IDCLOSE,  NULL,   "Exit this application",    14),
 ), 0, 0, 16, 15, 0, 0, PATH_RES . "toolbar.bmp");
 
-$statusbar = _create_control($mainwin, StatusBar, APPNAME);
+$statusbar = temp_create_control($mainwin, StatusBar, APPNAME);
 
 // Enter application loop
 
@@ -79,7 +79,7 @@ function process_main($window, $id)
 
 			// Open port
 
-			_set_text($statusbar, "Wait...");
+			temp_set_text($statusbar, "Wait...");
 			for($i = 0; $i < 100; $i++) {
 				$port = open_serial("COM1");
 				if($port != INVALID_HANDLE_VALUE)
@@ -131,8 +131,8 @@ function output($str)
 {
 	global $term, $statusbar;
 
-	_set_text($term, _get_text($term) . $str);
-	_set_text($statusbar, "Done.");
+	temp_set_text($term, temp_get_text($term) . $str);
+	temp_set_text($statusbar, "Done.");
 }
 
 //-------------------------------------------------------- SERIAL PORT FUNCTIONS

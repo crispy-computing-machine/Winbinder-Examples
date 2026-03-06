@@ -36,9 +36,9 @@ $cpwindow = wb_create_window(0, PopupWindow, 'Hyperlink test', WBC_CENTER, WBC_C
 
 // Create controls
 
-$link1 = _create_control($cpwindow, HyperLink, 'WinBinder web site', 20, 70, 280, 20, ID_HYPERLINK1, WBC_LINES);
-$link2 = _create_control($cpwindow, HyperLink, 'WinBinder web site', 20, 100, 280, 20, ID_HYPERLINK2, 0, 0xFF8000);
-$button = _create_control($cpwindow, PushButton, 'Change font', 100, 10, 90, 24, ID_UPDATE, 0);
+$link1 = temp_create_control($cpwindow, HyperLink, 'WinBinder web site', 20, 70, 280, 20, ID_HYPERLINK1, WBC_LINES);
+$link2 = temp_create_control($cpwindow, HyperLink, 'WinBinder web site', 20, 100, 280, 20, ID_HYPERLINK2, 0, 0xFF8000);
+$button = temp_create_control($cpwindow, PushButton, 'Change font', 100, 10, 90, 24, ID_UPDATE, 0);
 
 // Create controls
 

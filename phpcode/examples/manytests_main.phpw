@@ -99,7 +99,7 @@ function create_main_window()
 
 	// Create main menu
 
-	$mainmenu = _create_control($mainwin, Menu, array(
+	$mainmenu = temp_create_control($mainwin, Menu, array(
 
 		"&File",
 			array(ID_NEW,		"&New\tCtrl+N",		"", PATH_RES . "menu_new.bmp",	"Ctrl+N"),
@@ -133,11 +133,11 @@ function create_main_window()
 	wb_set_image(wb_get_control($mainmenu, ID_ABOUT), PATH_RES . "menu_help.bmp");
 
 	wb_set_enabled(wb_get_control($mainmenu, ID_SAVEAS), FALSE);
-	_set_value(wb_get_control($mainmenu, ID_MENUTEST1), TRUE);
+	temp_set_value(wb_get_control($mainmenu, ID_MENUTEST1), TRUE);
 
 	// Create toolbar
 
-	$toolbar = _create_control($mainwin, ToolBar, array(
+	$toolbar = temp_create_control($mainwin, ToolBar, array(
 	  	null,
 	  	array(ID_NEW,		NULL, "New (Ctrl+N)",		0),
 	  	array(ID_OPEN,		NULL, "Open (Ctrl+O)",		1),
@@ -229,10 +229,10 @@ function create_main_window()
 
 	// Almost done...
 
-	$statusbar = _create_control($mainwin, StatusBar, "Hello, I'm the status bar.");
+	$statusbar = temp_create_control($mainwin, StatusBar, "Hello, I'm the status bar.");
 	wb_set_image($mainwin, PATH_RES . "hyper.ico");
 	wb_set_handler($mainwin, "process_main");
-	_set_selected($maintab, 1);
+	temp_set_selected($maintab, 1);
 
 	// Sounds
 
@@ -240,9 +240,9 @@ function create_main_window()
 
 	wb_create_timer($mainwin, ID_APP_TIMER1, 1000);
 //	wb_create_timer($mainwin, ID_APP_TIMER2, 50);
-	_set_text(wb_get_control($mainwin, ID_TIME), date("h:i:s A"));
-	_set_value(wb_get_control($mainwin, IDC_PROGRESSBAR1051), null, 0, 60);
-	_set_value(wb_get_control($mainwin, IDC_PROGRESSBAR1051), date("s"));
+	temp_set_text(wb_get_control($mainwin, ID_TIME), date("h:i:s A"));
+	temp_set_value(wb_get_control($mainwin, IDC_PROGRESSBAR1051), null, 0, 60);
+	temp_set_value(wb_get_control($mainwin, IDC_PROGRESSBAR1051), date("s"));
 
 	// Fonts
 
@@ -278,7 +278,7 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 
 		case ID_RESULT:
 			if($lparam1 == WBC_KEYDOWN)
-				_set_text($statusbar, "Char $lparam2: " . chr($lparam2));
+				temp_set_text($statusbar, "Char $lparam2: " . chr($lparam2));
 			break;
 
 		case IDC_BUTTON1037:
@@ -294,7 +294,7 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 			break;
 
 		case IDC_TABCONTROL1003:
-			_set_text(wb_get_control($window, ID_RESULT), "Tab $lparam1 (" .
+			temp_set_text(wb_get_control($window, ID_RESULT), "Tab $lparam1 (" .
 			  wb_get_selected(wb_get_control($window, $id)) . ") selected.");
 			break;
 
@@ -304,7 +304,7 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 				$seltab = wb_get_selected(wb_get_control($window, IDC_TABCONTROL1003));
 			}
 			$seltab = ($seltab < 4) ? $seltab + 1 : 0;
-			_set_selected($maintab, $seltab);
+			temp_set_selected($maintab, $seltab);
 			break;
 
 		case IDC_BUTTON1036:
@@ -322,15 +322,15 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 
 		case ID_APP_TIMER1:
 
-			_set_text(wb_get_control($window, ID_TIME), date("h:i:s A"));
-			$txt = _get_text(wb_get_focus());
+			temp_set_text(wb_get_control($window, ID_TIME), date("h:i:s A"));
+			$txt = temp_get_text(wb_get_focus());
 			if(is_array($txt))
 				$txt = "Array";
-			_set_text(wb_get_control($window, ID_GDI),
+			temp_set_text(wb_get_control($window, ID_GDI),
 				"GDI: " . wb_get_system_info("gdiobjects") .
 				"  USER: " . wb_get_system_info("userobjects") .
 				" >" . substr($txt, 0, 10));
-			_set_value(wb_get_control($window, IDC_PROGRESSBAR1051), date("s"));
+			temp_set_value(wb_get_control($window, IDC_PROGRESSBAR1051), date("s"));
 			break;
 
 //		case ID_APP_TIMER2:
@@ -354,12 +354,12 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 			break;
 
 		case ID_MENUTEST1:
-			_set_value(wb_get_control($mainmenu, ID_MENUTEST2),
+			temp_set_value(wb_get_control($mainmenu, ID_MENUTEST2),
 				!wb_get_value(wb_get_control($mainmenu, ID_MENUTEST2)));
 			break;
 
 		case ID_MENUTEST2:
-			_set_value(wb_get_control($mainmenu, ID_MENUTEST1),
+			temp_set_value(wb_get_control($mainmenu, ID_MENUTEST1),
 				!wb_get_value(wb_get_control($mainmenu, ID_MENUTEST1)));
 			break;
 
@@ -368,20 +368,20 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 			break;
 
 		case ID_OPEN:
-			$filename = _sys_dlg_open($window, "Get file name", $file_filter);
+			$filename = temp_sys_dlg_open($window, "Get file name", $file_filter);
 			if($filename)
-				_set_text(wb_get_control($window, ID_RESULT), $filename);
+				temp_set_text(wb_get_control($window, ID_RESULT), $filename);
 			break;
 
 		case ID_SAVE:
 		case ID_SAVEAS:
-			$filename = _get_text(wb_get_control($window, ID_RESULT));
-			_sys_dlg_save($window, "Save file as...",
+			$filename = temp_get_text(wb_get_control($window, ID_RESULT));
+			temp_sys_dlg_save($window, "Save file as...",
 			  	"Arquivos Php (*.php)\0*.php\0All files (*.*)\0*.*" . "\0\0");
 			break;
 
 		case ID_PRINT:
-			_set_text(wb_get_control($window, ID_RESULT),
+			temp_set_text(wb_get_control($window, ID_RESULT),
 			  wb_sys_dlg_path($window, "Choose a folder", "c:\\"));
 			break;
 
@@ -400,7 +400,7 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 				}
 
 			$clr = wb_sys_dlg_color($window, "Choose a color", 0x008000);
-			_set_text(wb_get_control($window, ID_RESULT), $clr === NULL ? "NULL" : sprintf("#%06X", $clr));
+			temp_set_text(wb_get_control($window, ID_RESULT), $clr === NULL ? "NULL" : sprintf("#%06X", $clr));
 			break;
 
 		case ID_ABOUT:
@@ -439,8 +439,8 @@ function create_about_box($parent)
 	$text = APPNAME . "\r\nWinBinder version: " . WBC_VERSION . "\r\nPHP version: " . PHP_VERSION .
 		"\r\n" . wb_get_system_info("osversion");
 
-	_create_control($about, EditBox, $text, 20, 20, 200, 80, 0, WBC_MULTILINE | WBC_READONLY);
-	_create_control($about, PushButton, "Close",  80, 120, 80, 22, IDCANCEL);
+	temp_create_control($about, EditBox, $text, 20, 20, 200, 80, 0, WBC_MULTILINE | WBC_READONLY);
+	temp_create_control($about, PushButton, "Close",  80, 120, 80, 22, IDCANCEL);
 }
 
 function process_about($window, $id)

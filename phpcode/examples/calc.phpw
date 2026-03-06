@@ -77,7 +77,7 @@ function process_main($window, $id)
             $ctrl = wb_get_control($window, $id);
             if (wb_get_class($ctrl) != PushButton)
                 break;
-            $caption = trim(_get_text($ctrl));
+            $caption = trim(temp_get_text($ctrl));
 
             switch ($caption) {
 
@@ -170,7 +170,7 @@ function display($displaynumber)
     global $mainwin, $display, $memory;
 
     $display = (string)$displaynumber;
-    _set_text(wb_get_control($mainwin, IDC_DISPLAY), $display);
+    temp_set_text(wb_get_control($mainwin, IDC_DISPLAY), $display);
 
     $memctrl = wb_get_control($mainwin, IDC_MEM);
     wb_set_visible($memctrl, $memory);

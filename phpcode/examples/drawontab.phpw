@@ -35,9 +35,9 @@ wb_set_handler($mainwin, "process_main");
 
 // Create tab control and an ImageButton
 
-$maintab = _create_control($mainwin, TabControl, "Tab 1\nTab 2", 10, 10, 300, 240, 100);
+$maintab = temp_create_control($mainwin, TabControl, "Tab 1\nTab 2", 10, 10, 300, 240, 100);
 
-$ctrl = _create_control($maintab, ImageButton, '', 0, 0, 300, 240, 10);
+$ctrl = temp_create_control($maintab, ImageButton, '', 0, 0, 300, 240, 10);
 $img = wb_create_image(300, 240);
 wb_draw_rect($img, 0, 0, 300, 240, 0xFFF0F0, TRUE);
 for($y = 0; $y < 240; $y += 20) {

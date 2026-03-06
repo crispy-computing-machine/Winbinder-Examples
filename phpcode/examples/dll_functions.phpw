@@ -48,10 +48,10 @@ $mainwin = wb_create_window(0, PopupWindow, "Hello world!", 480, 420);
 
 $wbobj = unpack(WBOBJ, wb_peek($mainwin, WBOBJ_SIZE));
 $hwnd = $wbobj["hwnd"];
-$struct = _create_control($mainwin, EditBox, print_r($wbobj, true), 0, 0, 470, 380, 101, WBC_MULTILINE | WBC_READONLY);
+$struct = temp_create_control($mainwin, EditBox, print_r($wbobj, true), 0, 0, 470, 380, 101, WBC_MULTILINE | WBC_READONLY);
 wb_set_font($struct, wb_create_font("Courier New", 8));
 
-_set_text($mainwin, "HWND = $hwnd");
+temp_set_text($mainwin, "HWND = $hwnd");
 
 MessageBox($mainwin,
 	"Your current screen resolution is $x by $y pixels.\n" .

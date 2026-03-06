@@ -43,13 +43,13 @@ wb_set_area($mainwin, WBC_MAXSIZE, 0, 0, 410, 800);
 
 // Create controls
 
-$list = _create_control($mainwin,  ListView, '', 	   150,  20, 248, 214, ID_LIST, WBC_LINES);
-$list2 = _create_control($mainwin, ListView, '', 	   150, 238, 248, 100, ID_LIST, WBC_LINES);
-$list3 = _create_control($mainwin, ListView, '', 	    10,  50, 130, 265, ID_LIST, WBC_LINES);
-_create_control($mainwin, PushButton, 'Do nothing',	10,  20, 130,  24, ID_LEVEL1);
-_create_control($mainwin, CheckBox,   'Do nothing',	10, 320, 130,  24, ID_AUTO, 0, true);
-$statusbar = _create_control($mainwin, StatusBar);
-_set_text($statusbar, APPNAME);
+$list = temp_create_control($mainwin,  ListView, '', 	   150,  20, 248, 214, ID_LIST, WBC_LINES);
+$list2 = temp_create_control($mainwin, ListView, '', 	   150, 238, 248, 100, ID_LIST, WBC_LINES);
+$list3 = temp_create_control($mainwin, ListView, '', 	    10,  50, 130, 265, ID_LIST, WBC_LINES);
+temp_create_control($mainwin, PushButton, 'Do nothing',	10,  20, 130,  24, ID_LEVEL1);
+temp_create_control($mainwin, CheckBox,   'Do nothing',	10, 320, 130,  24, ID_AUTO, 0, true);
+$statusbar = temp_create_control($mainwin, StatusBar);
+temp_set_text($statusbar, APPNAME);
 
 // Start
 
@@ -176,7 +176,7 @@ function process_main($window, $id, $ctrl=0, $lparam=0, $lparam2=0, $lparam3=0)
 					$dim = wb_get_size($window);
 					$winwidth = $dim[0];
 					$winheight = $dim[1];
-					_set_text($statusbar,
+					temp_set_text($statusbar,
 						"Window area: $winwidth x $winheight pixels -- " .
 						"Client area: " . ($lparam3 & 0x0000FFFF) . " x " . (($lparam3 & 0xFFFF0000) / 0x10000) . " pixels\n");
 

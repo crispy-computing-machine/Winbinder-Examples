@@ -21,19 +21,19 @@ $mainwin = wb_create_window(0, 1, "WinBinder: To Do", WBC_CENTER, WBC_CENTER, 62
 
 // Insert controls
 
-_create_control($mainwin, ListView, "", 211, 61, 378, 279, ID_ITEMLIST, WBC_VISIBLE | WBC_ENABLED | WBC_SORT | WBC_LINES | WBC_SINGLE, 0);
-$_tmp_ctrl_ = _create_control($mainwin, PushButton, "up_arrow.bmp", 594, 61, 20, 21, ID_MOVEUP, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, ListView, "", 211, 61, 378, 279, ID_ITEMLIST, WBC_VISIBLE | WBC_ENABLED | WBC_SORT | WBC_LINES | WBC_SINGLE, 0);
+$_tmp_ctrl_ = temp_create_control($mainwin, PushButton, "up_arrow.bmp", 594, 61, 20, 21, ID_MOVEUP, WBC_VISIBLE | WBC_ENABLED, 0);
 wb_set_image($_tmp_ctrl_, 'D:\Projects\Winbinder-Examples\phpcode\todo/../resources/up_arrow.bmp', GREEN); unset($_tmp_ctrl_);
-$_tmp_ctrl_ = _create_control($mainwin, PushButton, "dn_arrow.bmp", 594, 86, 20, 21, ID_MOVEDOWN, WBC_VISIBLE | WBC_ENABLED, 0);
+$_tmp_ctrl_ = temp_create_control($mainwin, PushButton, "dn_arrow.bmp", 594, 86, 20, 21, ID_MOVEDOWN, WBC_VISIBLE | WBC_ENABLED, 0);
 wb_set_image($_tmp_ctrl_, 'D:\Projects\Winbinder-Examples\phpcode\todo/../resources/dn_arrow.bmp', GREEN); unset($_tmp_ctrl_);
-_create_control($mainwin, TreeView, "", 4, 35, 205, 399, ID_TREE, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($mainwin, EditBox, "(Description)", 214, 351, 375, 82, ID_DESCRIPTION, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE | WBC_READONLY, 0);
-_create_control($mainwin, Frame, "", 0, 27, 615, 3, IDC_SHAPE2119, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($mainwin, EditBox, "", 453, 35, 112, 21, ID_FILTERTEXT, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($mainwin, PushButton, "Fi&lter", 570, 35, 44, 21, ID_FILTER, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($mainwin, ComboBox, "", 453, 35, 112, 195, ID_FILTERPRESETS, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
-_create_control($mainwin, ComboBox, "", 310, 35, 137, 146, ID_FILTERTYPE, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
-_create_control($mainwin, ComboBox, "", 212, 35, 92, 146, ID_FIELD, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
+temp_create_control($mainwin, TreeView, "", 4, 35, 205, 399, ID_TREE, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, EditBox, "(Description)", 214, 351, 375, 82, ID_DESCRIPTION, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE | WBC_READONLY, 0);
+temp_create_control($mainwin, Frame, "", 0, 27, 615, 3, IDC_SHAPE2119, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, EditBox, "", 453, 35, 112, 21, ID_FILTERTEXT, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, PushButton, "Fi&lter", 570, 35, 44, 21, ID_FILTER, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, ComboBox, "", 453, 35, 112, 195, ID_FILTERPRESETS, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
+temp_create_control($mainwin, ComboBox, "", 310, 35, 137, 146, ID_FILTERTYPE, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
+temp_create_control($mainwin, ComboBox, "", 212, 35, 92, 146, ID_FIELD, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
 
 // End controls
 

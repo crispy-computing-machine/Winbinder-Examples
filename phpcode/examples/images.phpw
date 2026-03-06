@@ -38,22 +38,22 @@ $mainwin = wb_create_window(0, PopupWindow, APPNAME, WBC_CENTER, WBC_CENTER, 530
 
 // Create an opaque bitmapped frame
 
-$frame = _create_control($mainwin, Frame, "", 4, 20, 512, 15, ID, WBC_IMAGE);
+$frame = temp_create_control($mainwin, Frame, "", 4, 20, 512, 15, ID, WBC_IMAGE);
 wb_set_image($frame, PATH_RES . 'toolbar.bmp', GREEN);
 
 // Create a transparent bitmapped frame
 
-$frame = _create_control($mainwin, Frame, "", 4, 40, 512, 15, ID, WBC_IMAGE);
+$frame = temp_create_control($mainwin, Frame, "", 4, 40, 512, 15, ID, WBC_IMAGE);
 
 var_dump($frame, PATH_RES . 'toolbar.bmp', GREEN);
 wb_set_image($frame, PATH_RES . 'toolbar.bmp', GREEN);
 
 // Create a frame with a transparent 32 x 32 icon
 
-$frame = _create_control($mainwin, Frame, "", 4, 70, 32, 32, ID, WBC_IMAGE);
+$frame = temp_create_control($mainwin, Frame, "", 4, 70, 32, 32, ID, WBC_IMAGE);
 wb_set_image($frame, PATH_RES . 'viewer.ico');
 
-$frame = _create_control($mainwin, Frame, "", 45, 70, 32, 32, ID, WBC_IMAGE);
+$frame = temp_create_control($mainwin, Frame, "", 45, 70, 32, 32, ID, WBC_IMAGE);
 wb_set_image($frame, PATH_RES . 'viewer.ico', GREEN, 0, 1);
 
 // Create a transparent bitmap on the fly (adapted from ooi_winmine.phpw by Alexandre)
@@ -96,7 +96,7 @@ function colorTableConvert($index)
 	return $ctable[$index];
 }
 
-$frame = _create_control($mainwin, Frame, "", 90, 80, 16, 16, ID, WBC_IMAGE);
+$frame = temp_create_control($mainwin, Frame, "", 90, 80, 16, 16, ID, WBC_IMAGE);
 wb_set_image($frame, $im, GREEN);
 
 // Set the main window icon

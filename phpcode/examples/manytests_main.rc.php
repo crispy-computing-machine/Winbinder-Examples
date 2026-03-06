@@ -26,19 +26,19 @@ $mainwin = wb_create_window(0, 1, "Sample WinBinder application", WBC_CENTER, WB
 
 // Insert controls
 
-_create_control($mainwin, TabControl, "", 4, 35, 540, 274, IDC_TABCONTROL1003, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($mainwin, PushButton, "&Fechar", 494, 315, 50, 45, ID_EXIT, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($mainwin, PushButton, "", 259, 318, 40, 40, IDC_BUTTON1035, WBC_VISIBLE | WBC_ENABLED, 0);
-$_tmp_ctrl_ = _create_control($mainwin, PushButton, "hyper.ico", 304, 318, 40, 40, IDC_BUTTON1036, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, TabControl, "", 4, 35, 540, 274, IDC_TABCONTROL1003, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, PushButton, "&Fechar", 494, 315, 50, 45, ID_EXIT, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, PushButton, "", 259, 318, 40, 40, IDC_BUTTON1035, WBC_VISIBLE | WBC_ENABLED, 0);
+$_tmp_ctrl_ = temp_create_control($mainwin, PushButton, "hyper.ico", 304, 318, 40, 40, IDC_BUTTON1036, WBC_VISIBLE | WBC_ENABLED, 0);
 wb_set_image($_tmp_ctrl_, 'C:\@desenv\WinBinder\phpcode\examples/../resources/hyper.ico', GREEN); unset($_tmp_ctrl_);
-$_tmp_ctrl_ = _create_control($mainwin, PushButton, "ok.bmp", 349, 318, 40, 40, IDC_BUTTON1037, WBC_VISIBLE | WBC_ENABLED, 0);
+$_tmp_ctrl_ = temp_create_control($mainwin, PushButton, "ok.bmp", 349, 318, 40, 40, IDC_BUTTON1037, WBC_VISIBLE | WBC_ENABLED, 0);
 wb_set_image($_tmp_ctrl_, 'C:\@desenv\WinBinder\phpcode\examples/../resources/ok.bmp', GREEN); unset($_tmp_ctrl_);
-_create_control($mainwin, PushButton, "Zero", 214, 318, 40, 40, IDC_BUTTON1039, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($mainwin, Label, "...", 346, 365, 202, 19, ID_GDI, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
-_create_control($mainwin, EditBox, "(Results)", 4, 315, 205, 45, ID_RESULT, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
-_create_control($mainwin, Slider, "", 393, 320, 91, 35, IDC_SLIDER1049, WBC_VISIBLE | WBC_ENABLED | WBC_LINES, 0);
-_create_control($mainwin, Label, "Time:", 214, 365, 121, 16, ID_TIME, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
-_create_control($mainwin, Gauge, "IDC_PROGRESSBAR1051", 5, 365, 205, 14, IDC_PROGRESSBAR1051, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, PushButton, "Zero", 214, 318, 40, 40, IDC_BUTTON1039, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($mainwin, Label, "...", 346, 365, 202, 19, ID_GDI, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
+temp_create_control($mainwin, EditBox, "(Results)", 4, 315, 205, 45, ID_RESULT, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
+temp_create_control($mainwin, Slider, "", 393, 320, 91, 35, IDC_SLIDER1049, WBC_VISIBLE | WBC_ENABLED | WBC_LINES, 0);
+temp_create_control($mainwin, Label, "Time:", 214, 365, 121, 16, ID_TIME, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
+temp_create_control($mainwin, Gauge, "IDC_PROGRESSBAR1051", 5, 365, 205, 14, IDC_PROGRESSBAR1051, WBC_VISIBLE | WBC_ENABLED, 0);
 
 // End controls
 

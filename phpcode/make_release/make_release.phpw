@@ -160,17 +160,17 @@ include TODO_IO;
 include "make_release.rc.php";
 
 wb_set_handler($mainwin, "process_main");
-_set_text($mainwin, APPNAME . " version " . VERSION);
+temp_set_text($mainwin, APPNAME . " version " . VERSION);
 wb_set_image($mainwin, PATH_RES . "hyper.ico");
 
 // Initialize controls
 
-_set_text(wb_get_control($mainwin, IDC_TYPE), COMBO_ITEMS);
-_set_text(wb_get_control($mainwin, IDC_NOTES), file_get_contents(RELNOTES));
+temp_set_text(wb_get_control($mainwin, IDC_TYPE), COMBO_ITEMS);
+temp_set_text(wb_get_control($mainwin, IDC_NOTES), file_get_contents(RELNOTES));
 
 // Accelerator table
 
-_create_control($mainwin, Accel, array(
+temp_create_control($mainwin, Accel, array(
 	array(IDC_GO,	"F9"),
 ));
 
@@ -185,9 +185,9 @@ if($settings) {
 		$ctrl = wb_get_control($mainwin, constant("IDC_" . $flag));
 		$status = @$settings["Settings"][strtolower($flag)];
 		if(wb_get_class($ctrl) == ComboBox)
-			_set_selected($ctrl, $status);
+			temp_set_selected($ctrl, $status);
 		else
-			_set_value($ctrl, $status);
+			temp_set_value($ctrl, $status);
 	}
 } else {
 	// Using this app for the first time
@@ -201,10 +201,10 @@ process_main($mainwin, IDC_RELNOTES);	// Disable commands if it is the case
 $current_version = @file_get_contents(VERSION_FILE);
 $def = preg_match("/WINBINDER_VERSION\s+\"(.[^\"]*)\"/", $current_version, $ver);
 $ver = @$ver[1];
-_set_text(wb_get_control($mainwin, IDC_VERSION), $ver);
+temp_set_text(wb_get_control($mainwin, IDC_VERSION), $ver);
 $textbox = wb_get_control($mainwin, IDC_RESULT);
 
-_set_text(wb_get_control($mainwin, IDC_STATE), PROJ_STATE);
+temp_set_text(wb_get_control($mainwin, IDC_STATE), PROJ_STATE);
 
 // Move and show main window
 
@@ -246,14 +246,14 @@ function process_main($window, $id)
 				wb_set_enabled(wb_get_control($window, constant("IDC_" . $flag)), $status);
 			if(wb_get_value(wb_get_control($window, $id))) {
 				$fname = $flistfiles[wb_get_selected(wb_get_control($window, IDC_TYPE))];
-				_set_text(wb_get_control($window, IDC_FLIST),	$fname ? ($fname . "_zipme.txt") : "(none)");
+				temp_set_text(wb_get_control($window, IDC_FLIST),	$fname ? ($fname . "_zipme.txt") : "(none)");
 			} else {
-				_set_text(wb_get_control($window, IDC_FLIST),	"");
+				temp_set_text(wb_get_control($window, IDC_FLIST),	"");
 			}
 			break;
 
 		case IDC_RESULT:		// Hack to make a white "read-only" text box
-			_set_text(wb_get_control($window, $id), $lastresult);
+			temp_set_text(wb_get_control($window, $id), $lastresult);
 			break;
 
 		case IDC_CLEAR:
@@ -274,7 +274,7 @@ function process_main($window, $id)
 			);
 			$status = wb_get_selected(wb_get_control($window, $id));
 			for($i = 0; $i < count($all_flags); $i++) {
-				_set_value(wb_get_control($window, constant("IDC_" . $all_flags[$i])),
+				temp_set_value(wb_get_control($window, constant("IDC_" . $all_flags[$i])),
 				$check[$status][$i]);
 			}
 			process_main($window, IDC_ZIP);
@@ -311,7 +311,7 @@ function save_version($mainwin)
 	// Get version number from edit control and save wb_version.h with new version number
 
 	$current_version = @file_get_contents(VERSION_FILE);
-	$ver = trim(_get_text(wb_get_control($mainwin, IDC_VERSION)));
+	$ver = trim(temp_get_text(wb_get_control($mainwin, IDC_VERSION)));
 	preg_match("/(\d+)\.(\d+)\.(\d+)/", $ver, $parts);
 	$new_version = sprintf(VERSION_CONTENTS, $ver, $parts[1], $parts[2], $parts[3]);
 	if(preg_split("/\r\n/", $current_version) != preg_split("/\r\n/", $new_version)) {
@@ -361,9 +361,9 @@ function go($mainwin)
 
 	if(wb_get_value(wb_get_control($mainwin, IDC_RELNOTES))) {
 
-		if(file_get_contents(RELNOTES) != _get_text(wb_get_control($mainwin, IDC_NOTES))) {
+		if(file_get_contents(RELNOTES) != temp_get_text(wb_get_control($mainwin, IDC_NOTES))) {
 			out("Saving release notes...\r\n");
-			file_put_contents(RELNOTES, _get_text(wb_get_control($mainwin, IDC_NOTES)));
+			file_put_contents(RELNOTES, temp_get_text(wb_get_control($mainwin, IDC_NOTES)));
 		}
 	}
 
@@ -699,7 +699,7 @@ function update_xml_10($version)
 	$xml = str_replace("%version%", $version, $xml);
 	$xml = str_replace("%date%", date("Y-m-d"), $xml);
 	$xml = str_replace("%state%", PROJ_STATE, $xml);
-	$xml = str_replace("%notes%", _get_text(wb_get_control($mainwin, IDC_NOTES)), $xml);
+	$xml = str_replace("%notes%", temp_get_text(wb_get_control($mainwin, IDC_NOTES)), $xml);
 
 	// Save XML
 
@@ -739,7 +739,7 @@ function update_xml_14($version)
 	$xml = str_replace("%date%", date("Y-m-d"), $xml);
 	$xml = str_replace("%time%", date("H:i:s"), $xml);
 	$xml = str_replace("%stability%", PROJ_STATE, $xml);
-	$xml = str_replace("%notes%", _get_text(wb_get_control($mainwin, IDC_NOTES)), $xml);
+	$xml = str_replace("%notes%", temp_get_text(wb_get_control($mainwin, IDC_NOTES)), $xml);
 
 	// Save XML
 
@@ -807,7 +807,7 @@ function out($str)
 
 	if($str === NULL) {
 		$lastresult = "";
-		_set_text($textbox, "");
+		temp_set_text($textbox, "");
 		wb_refresh($textbox, 1);
 		return;
 	}
@@ -818,7 +818,7 @@ function out($str)
 	}
 
 	$lastresult .= $str;
-	_set_text($textbox, $lastresult);
+	temp_set_text($textbox, $lastresult);
 	wb_refresh($textbox, 1);
 }
 

@@ -106,7 +106,7 @@ function reset_form($class, $parent, $title, $width, $height, $style=0, $value=0
 	$pos = wb_get_position($parent);
 	wb_set_position($wb->formwin, $pos[0] + 180, $pos[1] + 76);
 	wb_set_size($wb->formwin, $width, $height);
-	_set_text($wb->formwin, $title);
+	temp_set_text($wb->formwin, $title);
 	wb_set_visible($wb->formwin, true);
 
 	// Create a treeview item for this form
@@ -115,7 +115,7 @@ function reset_form($class, $parent, $title, $width, $height, $style=0, $value=0
 
 	$root = $wb->rootnode;
 
-	$node = _create_items($wb->tree, array(
+	$node = temp_create_items($wb->tree, array(
 		array($title, $wb->currentform, $root, 8, 9, 2),
 	));
 
@@ -128,7 +128,7 @@ function reset_form($class, $parent, $title, $width, $height, $style=0, $value=0
 	// Expand the root and select the new node
 
 	wb_set_state($wb->tree, $root, 1);
-	_set_selected($wb->tree, $node);
+	temp_set_selected($wb->tree, $node);
 }
 
 /* Form processing */

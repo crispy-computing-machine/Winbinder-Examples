@@ -36,7 +36,7 @@ $mainwin = wb_create_window(0, PopupWindow, APPNAME,
 
 wb_set_handler($mainwin, "process_main");
 
-$statusbar = _create_control($mainwin, StatusBar, "");
+$statusbar = temp_create_control($mainwin, StatusBar, "");
 
 wb_main_loop();
 
@@ -82,7 +82,7 @@ function process_main($window, $id, $ctrl=0, $lparam=0, $lparam2=0)
              */
             [$x, $y] = wb_get_mouse_pos($window); //  $window for relative to window
 
-			_set_text($statusbar, sprintf("(%04d, %04d): Parm %04X (%s)\n",
+			temp_set_text($statusbar, sprintf("(%04d, %04d): Parm %04X (%s)\n",
 			  $x, $y, $lparam, $str));
 
 			$color = BLACK;

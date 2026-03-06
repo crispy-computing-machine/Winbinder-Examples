@@ -23,10 +23,10 @@ function create_options_dlg($parent)
 		$var = strtolower($var);
 		$ctrl = wb_get_control($wb->winoptions, constant("IDC_" . strtoupper($var)));
 		if(preg_match("/[\d\.\,]+/", $wb->$var))
-			_set_value($ctrl, $wb->$var);
+			temp_set_value($ctrl, $wb->$var);
 		else {
 			if(wb_get_class($ctrl) != RadioButton && wb_get_class($ctrl) != CheckBox)
-				_set_text($ctrl, $wb->$var);
+				temp_set_text($ctrl, $wb->$var);
 		}
 	}
 	wb_set_handler($wb->winoptions, "process_options");
@@ -42,14 +42,14 @@ function process_options($window, $id, $ctrl)
 
 		case IDC_WIREFRAME:
 		case IDC_GRID:
-			_set_value(wb_get_control($wb->mainwin, $id), wb_get_value($ctrl));
+			temp_set_value(wb_get_control($wb->mainwin, $id), wb_get_value($ctrl));
 			break;
 
 		case IDC_BROWSE:
-	 		$current = _get_text(wb_get_control($window, IDC_FILEPATH));
+	 		$current = temp_get_text(wb_get_control($window, IDC_FILEPATH));
 			$path = wb_sys_dlg_path($window, 'Select default path for project files:', $current);
 			if($path)
-				_set_text(wb_get_control($window, IDC_FILEPATH), $path);
+				temp_set_text(wb_get_control($window, IDC_FILEPATH), $path);
 			break;
 
 		case IDOK:
@@ -62,7 +62,7 @@ function process_options($window, $id, $ctrl)
 				if(wb_get_class($ctrl) == CheckBox)
 					$wb->$var = wb_get_value($ctrl);
 				else
-					$wb->$var = _get_text($ctrl);
+					$wb->$var = temp_get_text($ctrl);
 			}
 
 			// Fall-through

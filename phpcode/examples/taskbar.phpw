@@ -51,8 +51,8 @@ function create_main_window()
 
 	// Insert controls
 
-	_create_control($mainwin, PushButton, "&Create secondary window", 80, 20, 150, 25, IDC_SECWIN);
-	_create_control($mainwin, PushButton, "Change &state", 80, 60, 150, 25, IDC_STATE, WBC_DISABLED);
+	temp_create_control($mainwin, PushButton, "&Create secondary window", 80, 20, 150, 25, IDC_SECWIN);
+	temp_create_control($mainwin, PushButton, "Change &state", 80, 60, 150, 25, IDC_STATE, WBC_DISABLED);
 	wb_create_timer($mainwin, ID_TIMER, 1000);
 
 	// Show main window

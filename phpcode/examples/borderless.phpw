@@ -57,20 +57,20 @@ wb_set_cursor($mainwin, 'cross');
 
 $states = wb_load_image(PATH_RES . 'states.bmp');
 
-$btn = _create_control($mainwin, ImageButton, "Toggle Always on Top",	10, 346, 32, 32, ID_ONTOP, 0);
+$btn = temp_create_control($mainwin, ImageButton, "Toggle Always on Top",	10, 346, 32, 32, ID_ONTOP, 0);
 wb_set_image($btn, $states, GREEN);
 wb_set_cursor($btn, 'uparrow');
 
-$btn = _create_control($mainwin, ImageButton, "Button 2", 			42, 346, 32, 32, 0, 0);
+$btn = temp_create_control($mainwin, ImageButton, "Button 2", 			42, 346, 32, 32, 0, 0);
 wb_set_image($btn, $states);
 
-$btn = _create_control($mainwin, ImageButton, "Button 3",				74, 346, 32, 32, 0, 0);
+$btn = temp_create_control($mainwin, ImageButton, "Button 3",				74, 346, 32, 32, 0, 0);
 wb_set_image($btn, $states);
 
-$btn = _create_control($mainwin, ImageButton, "Button 4",				106, 346, 32, 32, 0, WBC_DISABLED);
+$btn = temp_create_control($mainwin, ImageButton, "Button 4",				106, 346, 32, 32, 0, WBC_DISABLED);
 wb_set_image($btn, $states);
 
-$btn = _create_control($mainwin, ImageButton, "Close this window",	WIDTH -  40, 346, 32, 32, IDCLOSE, 0);
+$btn = temp_create_control($mainwin, ImageButton, "Close this window",	WIDTH -  40, 346, 32, 32, IDCLOSE, 0);
 wb_set_image($btn, $states);
 wb_destroy_image($btn);
 

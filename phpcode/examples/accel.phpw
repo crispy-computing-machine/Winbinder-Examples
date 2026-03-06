@@ -41,7 +41,7 @@ $mainwin = wb_create_window(0, AppWindow, APPNAME . " - PHP " . PHP_VERSION, 320
 
 // Create menu
 
-_create_control($mainwin, Menu, array(
+temp_create_control($mainwin, Menu, array(
 	"&Test",
 		array(ID_ENTER,		"Accel1\tEnter",		NULL, "", "enter"),
 		array(ID_C_ENTER,	"Accel2\tCtrl+Enter",	NULL, "", "ctrl+enter"),
@@ -52,7 +52,7 @@ _create_control($mainwin, Menu, array(
 
 // Accelerator table (replaces menu accelerators)
 
-_create_control($mainwin, Accel, array(
+temp_create_control($mainwin, Accel, array(
 	array(ID_ENTER,		"enter"),
 	array(ID_C_ENTER,	"ctrl+enter"),
 	array(ID_PLUS,		"plus"),

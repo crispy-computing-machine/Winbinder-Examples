@@ -41,7 +41,7 @@ wb_set_image($mainwin, PATH_RES . "hyper.ico");
 
 // Create menu
 
-_create_control($mainwin, Menu, array(
+temp_create_control($mainwin, Menu, array(
     "&File",
         array(ID_OPEN,  "&Open...\tCtrl+O", NULL, PATH_RES . "menu_open.bmp", "Ctrl+O"),
         null,           // Separator
@@ -52,7 +52,7 @@ _create_control($mainwin, Menu, array(
 
 // Create toolbar
 
-_create_control($mainwin, ToolBar, array(
+temp_create_control($mainwin, ToolBar, array(
     null,                                   // Toolbar separator
     array(ID_OPEN,  NULL,   "Open a file",              1),
     null,                                   // Toolbar separator
@@ -62,11 +62,11 @@ _create_control($mainwin, ToolBar, array(
 
 // Create status bar
 
-$statusbar = _create_control($mainwin, StatusBar, APPNAME);
+$statusbar = temp_create_control($mainwin, StatusBar, APPNAME);
 
 // Create label control inside the window
 
-_create_control($mainwin, Label, "This is a demo 'Hello world'\n" .
+temp_create_control($mainwin, Label, "This is a demo 'Hello world'\n" .
   "application made with WinBinder.\n" .
   "It has a toolbar, a status bar and a menu.",
   10, 70, 290, 80, 0, WBC_CENTER);
@@ -99,9 +99,9 @@ function process_main($window, $id)
             break;
 
         case ID_OPEN:
-            $filename = _sys_dlg_open($window, "Get It", $file_filter);
+            $filename = temp_sys_dlg_open($window, "Get It", $file_filter);
             if($filename)
-                _set_text($statusbar, $filename);
+                temp_set_text($statusbar, $filename);
             break;
 
         case IDCLOSE:       // IDCLOSE is predefined

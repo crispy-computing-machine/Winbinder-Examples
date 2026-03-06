@@ -35,12 +35,12 @@ define("ID_USE",	202);
 $mainwin = wb_create_window(0, PopupWindow, APPNAME,
   WBC_CENTER, WBC_CENTER, 400, 300, WBC_NOTIFY, WBC_MOUSEDOWN | WBC_MOUSEUP | WBC_MOUSEMOVE);
 
-_create_control($mainwin, RadioButton, "Move control", 10, 5,  85, 32, ID_MOVE, 0, true);
-_create_control($mainwin, RadioButton, "Use control", 100, 5, 120, 32, ID_USE,  0, false);
+temp_create_control($mainwin, RadioButton, "Move control", 10, 5,  85, 32, ID_MOVE, 0, true);
+temp_create_control($mainwin, RadioButton, "Use control", 100, 5, 120, 32, ID_USE,  0, false);
 
 // Create a control
 
-$btn  = _create_control($mainwin, PushButton, "Move me", 10, 40, 80, 26, 1001);
+$btn  = temp_create_control($mainwin, PushButton, "Move me", 10, 40, 80, 26, 1001);
 wb_set_enabled($btn, false);
 
 wb_set_handler($mainwin, "process_main");
@@ -59,7 +59,7 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0)
 		case ID_USE:
 			$moving = wb_get_value(wb_get_control($window, ID_MOVE));
 			wb_set_enabled($btn, !$moving);
-			_set_text($btn, $moving ? "Move me" : "Use me" );
+			temp_set_text($btn, $moving ? "Move me" : "Use me" );
 			break;
 
 		case IDDEFAULT:

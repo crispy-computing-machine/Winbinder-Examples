@@ -26,30 +26,30 @@ define('APPNAME', 		'Splitter tests');
 include PATH_INC . "winbinder.php";
 
 $mainwin = wb_create_window(0, ResizableWindow, "Splitter example app", WBC_CENTER, WBC_CENTER, 980, 640, WBC_NOTIFY, WBC_RESIZE);
-$split = _create_control($mainwin, Splitter, "", 0, 0, 980, 640, 1001, WBC_SPLIT_VERTICAL, 360);
+$split = temp_create_control($mainwin, Splitter, "", 0, 0, 980, 640, 1001, WBC_SPLIT_VERTICAL, 360);
 
-$paneLeft = _create_control($split, InvisibleArea, "", 0, 0, 320, 640, 1100, WBC_BORDER);
-$paneRight = _create_control($split, InvisibleArea, "", 0, 0, 640, 640, 1200, WBC_BORDER);
+$paneLeft = temp_create_control($split, InvisibleArea, "", 0, 0, 320, 640, 1100, WBC_BORDER);
+$paneRight = temp_create_control($split, InvisibleArea, "", 0, 0, 640, 640, 1200, WBC_BORDER);
 
 // Left pane: simple item manager controls
-$lblSearch = _create_control($paneLeft, Label, "Search", 12, 12, 70, 20, 1101, 0);
-$txtSearch = _create_control($paneLeft, EditBox, "", 86, 10, 220, 22, 1102, WBC_BORDER);
-$lstItems = _create_control($paneLeft, ListBox, "", 12, 42, 294, 420, 1103, WBC_BORDER);
-$chkCase = _create_control($paneLeft, CheckBox, "Match case", 12, 468, 120, 22, 1104, 0);
-$btnAdd = _create_control($paneLeft, PushButton, "Add", 12, 500, 90, 28, 1105, 0);
-$btnRemove = _create_control($paneLeft, PushButton, "Remove", 108, 500, 90, 28, 1106, 0);
-$btnClear = _create_control($paneLeft, PushButton, "Clear", 204, 500, 90, 28, 1107, 0);
+$lblSearch = temp_create_control($paneLeft, Label, "Search", 12, 12, 70, 20, 1101, 0);
+$txtSearch = temp_create_control($paneLeft, EditBox, "", 86, 10, 220, 22, 1102, WBC_BORDER);
+$lstItems = temp_create_control($paneLeft, ListBox, "", 12, 42, 294, 420, 1103, WBC_BORDER);
+$chkCase = temp_create_control($paneLeft, CheckBox, "Match case", 12, 468, 120, 22, 1104, 0);
+$btnAdd = temp_create_control($paneLeft, PushButton, "Add", 12, 500, 90, 28, 1105, 0);
+$btnRemove = temp_create_control($paneLeft, PushButton, "Remove", 108, 500, 90, 28, 1106, 0);
+$btnClear = temp_create_control($paneLeft, PushButton, "Clear", 204, 500, 90, 28, 1107, 0);
 
 wb_create_item($lstItems, "Alpha");
 wb_create_item($lstItems, "Beta");
 wb_create_item($lstItems, "Gamma");
 
 // Right pane: details/editor controls
-$lblTitle = _create_control($paneRight, Label, "Details", 12, 12, 120, 24, 1201, 0);
-$edtDetails = _create_control($paneRight, EditBox, "Select an item to view/edit details.", 12, 42, 610, 230, 1202, WBC_MULTILINE | WBC_BORDER);
-$lblNotes = _create_control($paneRight, Label, "Notes", 12, 284, 120, 20, 1203, 0);
-$edtNotes = _create_control($paneRight, EditBox, "", 12, 308, 610, 220, 1204, WBC_MULTILINE | WBC_BORDER);
-$btnSave = _create_control($paneRight, PushButton, "Save", 532, 536, 90, 28, 1205, 0);
+$lblTitle = temp_create_control($paneRight, Label, "Details", 12, 12, 120, 24, 1201, 0);
+$edtDetails = temp_create_control($paneRight, EditBox, "Select an item to view/edit details.", 12, 42, 610, 230, 1202, WBC_MULTILINE | WBC_BORDER);
+$lblNotes = temp_create_control($paneRight, Label, "Notes", 12, 284, 120, 20, 1203, 0);
+$edtNotes = temp_create_control($paneRight, EditBox, "", 12, 308, 610, 220, 1204, WBC_MULTILINE | WBC_BORDER);
+$btnSave = temp_create_control($paneRight, PushButton, "Save", 532, 536, 90, 28, 1205, 0);
 
 wb_set_splitter_panes($split, $paneLeft, $paneRight);
 wb_set_splitter_minsize($split, 280, 420);

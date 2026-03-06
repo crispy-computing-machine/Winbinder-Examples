@@ -64,7 +64,7 @@ function read_project($filename)
 			max(0, (int)$geom[1]),
 			$id, $style, $value, false);
 	}
-	_set_text($wb->statusbar, "Created $i controls");
+	temp_set_text($wb->statusbar, "Created $i controls");
 
 	$wb->form[$wb->currentform]->ncurrent_control = -1;
 
@@ -76,7 +76,7 @@ function read_project($filename)
 	}
 	$wb->form[$wb->currentform]->ncurrindex = $wb->project['Projectsettings']['currentindex'];
 
-	_set_selected($wb->tree, 0);
+	temp_set_selected($wb->tree, 0);
 	update_control_data(true);
 }
 
@@ -148,8 +148,8 @@ function save_project($filename)
 	// Save project file to disk
 
 	file_put_contents($filename, generate_ini($wb->project, PROJ_HEADER));
-	_set_text($wb->statusbar, "Project saved");
-	_set_text($wb->mainwin, basename($filename) . " - " . APPNAME);
+	temp_set_text($wb->statusbar, "Project saved");
+	temp_set_text($wb->mainwin, basename($filename) . " - " . APPNAME);
 	$wb->proj_filename = $filename;
 }
 
@@ -492,9 +492,9 @@ function read_settings()
 			$var = strtolower($var);
 			$wb->$var = $wb->settings["Settings"][$var];
 			if($wb->$var !== '' && preg_match("/[\d\.\,]+/", $wb->$var))
-				_set_value($ctrl, $wb->$var);
+				temp_set_value($ctrl, $wb->$var);
 			else
-				_set_text($ctrl, $wb->$var);
+				temp_set_text($ctrl, $wb->$var);
 		}
 	}
 
@@ -507,7 +507,7 @@ function save_settings()
 {
 	global $wb;
 
-	_set_text($wb->statusbar, "Saving configuration...");
+	temp_set_text($wb->statusbar, "Saving configuration...");
 
 	// Get values
 
@@ -530,7 +530,7 @@ function save_settings()
 	$contents = generate_ini($wb->settings, "; Make Release INI file\r\n");
 	if($contents) {
 		file_put_contents(SYS_INIFILE, $contents);
-		_set_text($wb->statusbar, "Configuration saved.");
+		temp_set_text($wb->statusbar, "Configuration saved.");
 	} else
 		wb_message_box($wb->mainwin, "Problem saving file " . SYS_INIFILE);
 

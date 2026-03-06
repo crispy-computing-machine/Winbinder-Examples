@@ -48,10 +48,10 @@ $mainwin = wb_create_window(0, PopupWindow, APPNAME, 540, 340);
 
 file_put_contents("sample.rtf", RTF_FILE);
 $r = file_get_contents("sample.rtf");
-$rtfctrl1 = _create_control($mainwin, RTFEditBox, $r, 0, 0, 540, 150, 101);
+$rtfctrl1 = temp_create_control($mainwin, RTFEditBox, $r, 0, 0, 540, 150, 101);
 unlink("sample.rtf");
 
-$rtfctrl2 = _create_control($mainwin, RTFEditBox, sprintf(RTF_FMT, APPNAME), 0, 150, 540, 340, 102, WBC_READONLY);
+$rtfctrl2 = temp_create_control($mainwin, RTFEditBox, sprintf(RTF_FMT, APPNAME), 0, 150, 540, 340, 102, WBC_READONLY);
 
 wb_main_loop();                                                 // Enter message loop
 

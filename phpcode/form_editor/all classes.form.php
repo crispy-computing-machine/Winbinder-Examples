@@ -34,35 +34,35 @@ $winmain = wb_create_window(null, AppWindow, '(Empty Form)', WBC_CENTER, WBC_CEN
 
 // Insert controls
 
-$tab = _create_control($winmain, TabControl, 'Tab1,Tab2,Tab3', 10, 215, 195, 85, IDC_TABCONTROL1020, 0x00000000, 0, 0);
-_create_control($winmain, PushButton, 'PushButton1', 10, 15, 100, 25, IDC_PUSHBUTTON1001, 0x00000000, 0, 0);
-$ctrl = $ctrl = _create_control($winmain, ImageButton, 'ImageButton2', 120, 15, 90, 60, IDC_IMAGEBUTTON1002, 0x00000000, 0, 0);
+$tab = temp_create_control($winmain, TabControl, 'Tab1,Tab2,Tab3', 10, 215, 195, 85, IDC_TABCONTROL1020, 0x00000000, 0, 0);
+temp_create_control($winmain, PushButton, 'PushButton1', 10, 15, 100, 25, IDC_PUSHBUTTON1001, 0x00000000, 0, 0);
+$ctrl = $ctrl = temp_create_control($winmain, ImageButton, 'ImageButton2', 120, 15, 90, 60, IDC_IMAGEBUTTON1002, 0x00000000, 0, 0);
 $img = wb_load_image('resources\symb_imagebutton.bmp');
   wb_set_image($ctrl, $img, NOCOLOR, 0, 0);
-  wb_destroy_image($img);_create_control($winmain, InvisibleArea, 'InvisibleArea3', 220, 15, 70, 60, IDC_INVISIBLEAREA1003, 0x00000000, 0, 0);
-_create_control($winmain, CheckBox, 'CheckBox4', 300, 20, 120, 15, IDC_CHECKBOX1004, 0x00000000, 0, 0);
-_create_control($winmain, RadioButton, 'RadioButton5', 300, 40, 120, 15, IDC_RADIOBUTTON1005, 0x00000000, 0, 0);
-_create_control($winmain, HyperLink, 'HyperLink6', 405, 25, 165, 15, IDC_HYPERLINK1006, 0x00000880, 12582912, 0);
-_create_control($winmain, Label, 'Label7', 10, 50, 100, 15, 0, 0x00000000, 0, 0);
-_create_control($winmain, EditBox, 'EditBox8', 220, 225, 200, 20, IDC_EDITBOX1008, 0x00000000, 0, 0);
-_create_control($winmain, RTFEditBox, 'RTFEditBox9', 300, 65, 120, 140, IDC_RTFEDITBOX1009, 0x00000000, 0, 0);
-_create_control($winmain, Frame, 'Frame10', 10, 75, 280, 130, 0, 0x00000000, 0, 0);
-$ctrl = _create_control($winmain, ListBox, 'ListBox11', 25, 95, 120, 95, IDC_LISTBOX1011, 0x00000000, 0, 0);
-_set_text($ctrl, explode(',', 'ListBox11'));
-$ctrl = _create_control($winmain, ComboBox, 'ComboBox12', 155, 95, 120, 95, IDC_COMBOBOX1013, 0x00000000, 0, 0);
-_set_text($ctrl, explode(',', 'ComboBox12'));
-_create_control($winmain, Spinner, 'Spinner13', 440, 410, 20, 20, IDC_SPINNER1014, 0x00000000, 0, 0);
-$ctrl = _create_control($winmain, ScrollBar, 'ScrollBar14', 435, 305, 140, 20, IDC_SCROLLBAR1015, 0x00000000, 0, 0);
-_set_value($ctrl, 0);
-$ctrl = _create_control($winmain, Slider, 'Slider15', 430, 380, 145, 20, IDC_SLIDER1016, 0x00000000, 50, 0);
-_set_value($ctrl, 50);
-$ctrl = _create_control($winmain, Gauge, 'Gauge16', 435, 345, 140, 20, IDC_GAUGE1017, 0x00000000, 50, 0);
-_set_value($ctrl, 50);
-_create_control($winmain, Calendar, 'Calendar17', 220, 263, 200, 167, IDC_CALENDAR1018, 0x00000008, 0, 0);
-_create_control($winmain, HTMLControl, 'HTMLControl18', 435, 215, 140, 80, IDC_HTMLCONTROL1019, 0x00000008, 0, 0);
-_create_control($winmain, TreeView, 'TreeView20', 425, 55, 150, 150, IDC_TREEVIEW1021, 0x00000000, 0, 0);
-$ctrl = _create_control($winmain, ListView, 'Field 1,Field 2,Field3', 10, 310, 195, 120, IDC_LISTVIEW1022, 0x00000000, 0, 0);
-_set_text($ctrl, 'Field 1,Field 2,Field3');
+  wb_destroy_image($img);temp_create_control($winmain, InvisibleArea, 'InvisibleArea3', 220, 15, 70, 60, IDC_INVISIBLEAREA1003, 0x00000000, 0, 0);
+temp_create_control($winmain, CheckBox, 'CheckBox4', 300, 20, 120, 15, IDC_CHECKBOX1004, 0x00000000, 0, 0);
+temp_create_control($winmain, RadioButton, 'RadioButton5', 300, 40, 120, 15, IDC_RADIOBUTTON1005, 0x00000000, 0, 0);
+temp_create_control($winmain, HyperLink, 'HyperLink6', 405, 25, 165, 15, IDC_HYPERLINK1006, 0x00000880, 12582912, 0);
+temp_create_control($winmain, Label, 'Label7', 10, 50, 100, 15, 0, 0x00000000, 0, 0);
+temp_create_control($winmain, EditBox, 'EditBox8', 220, 225, 200, 20, IDC_EDITBOX1008, 0x00000000, 0, 0);
+temp_create_control($winmain, RTFEditBox, 'RTFEditBox9', 300, 65, 120, 140, IDC_RTFEDITBOX1009, 0x00000000, 0, 0);
+temp_create_control($winmain, Frame, 'Frame10', 10, 75, 280, 130, 0, 0x00000000, 0, 0);
+$ctrl = temp_create_control($winmain, ListBox, 'ListBox11', 25, 95, 120, 95, IDC_LISTBOX1011, 0x00000000, 0, 0);
+temp_set_text($ctrl, explode(',', 'ListBox11'));
+$ctrl = temp_create_control($winmain, ComboBox, 'ComboBox12', 155, 95, 120, 95, IDC_COMBOBOX1013, 0x00000000, 0, 0);
+temp_set_text($ctrl, explode(',', 'ComboBox12'));
+temp_create_control($winmain, Spinner, 'Spinner13', 440, 410, 20, 20, IDC_SPINNER1014, 0x00000000, 0, 0);
+$ctrl = temp_create_control($winmain, ScrollBar, 'ScrollBar14', 435, 305, 140, 20, IDC_SCROLLBAR1015, 0x00000000, 0, 0);
+temp_set_value($ctrl, 0);
+$ctrl = temp_create_control($winmain, Slider, 'Slider15', 430, 380, 145, 20, IDC_SLIDER1016, 0x00000000, 50, 0);
+temp_set_value($ctrl, 50);
+$ctrl = temp_create_control($winmain, Gauge, 'Gauge16', 435, 345, 140, 20, IDC_GAUGE1017, 0x00000000, 50, 0);
+temp_set_value($ctrl, 50);
+temp_create_control($winmain, Calendar, 'Calendar17', 220, 263, 200, 167, IDC_CALENDAR1018, 0x00000008, 0, 0);
+temp_create_control($winmain, HTMLControl, 'HTMLControl18', 435, 215, 140, 80, IDC_HTMLCONTROL1019, 0x00000008, 0, 0);
+temp_create_control($winmain, TreeView, 'TreeView20', 425, 55, 150, 150, IDC_TREEVIEW1021, 0x00000000, 0, 0);
+$ctrl = temp_create_control($winmain, ListView, 'Field 1,Field 2,Field3', 10, 310, 195, 120, IDC_LISTVIEW1022, 0x00000000, 0, 0);
+temp_set_text($ctrl, 'Field 1,Field 2,Field3');
 
 // End controls
 

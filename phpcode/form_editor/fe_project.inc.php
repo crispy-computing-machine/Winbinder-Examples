@@ -23,10 +23,10 @@ function create_project_dlg($parent)
 		$var = strtolower($var);
 		$ctrl = wb_get_control($wb->winproject, constant("IDC_" . strtoupper($var)));
 		if(preg_match("/[\d\.\,]+/", $wb->form[$wb->currentform]->$var))
-			_set_value($ctrl, $wb->form[$wb->currentform]->$var);
+			temp_set_value($ctrl, $wb->form[$wb->currentform]->$var);
 		else {
 			if(wb_get_class($ctrl) != RadioButton && wb_get_class($ctrl) != CheckBox)
-				_set_text($ctrl, $wb->form[$wb->currentform]->$var);
+				temp_set_text($ctrl, $wb->form[$wb->currentform]->$var);
 		}
 	}
 
@@ -37,7 +37,7 @@ function create_project_dlg($parent)
 	$val = wb_get_value(wb_get_control($wb->winproject, IDC_ISTABPAGE));
 	wb_set_enabled(wb_get_control($wb->winproject, IDC_TABNUMBER), $val);
 	wb_set_enabled(wb_get_control($wb->winproject, IDC_TABNUMBERSPINNER), $val);
-	$hastext = (_get_text(wb_get_control($wb->winproject, IDC_CTRLVAR)) !== '');
+	$hastext = (temp_get_text(wb_get_control($wb->winproject, IDC_CTRLVAR)) !== '');
 	wb_set_enabled(wb_get_control($wb->winproject, IDC_STARTCTRLVAL), $hastext);
 
 	wb_set_handler($wb->winproject, "process_project");
@@ -58,7 +58,7 @@ function process_project($window, $id, $ctrl)
 			break;
 
 		case IDC_CTRLVAR:
-			$hastext = (_get_text($ctrl) !== '');
+			$hastext = (temp_get_text($ctrl) !== '');
 			wb_set_enabled(wb_get_control($wb->winproject, IDC_STARTCTRLVAL), $hastext);
 			break;
 
@@ -74,7 +74,7 @@ function process_project($window, $id, $ctrl)
 				$var = strtolower($var);
 				$ctrl = wb_get_control($wb->winproject, constant("IDC_" . strtoupper($var)));
 				if(wb_get_class($ctrl) != RadioButton && wb_get_class($ctrl) != CheckBox)
-					$wb->form[$wb->currentform]->$var = _get_text($ctrl);
+					$wb->form[$wb->currentform]->$var = temp_get_text($ctrl);
 				else
 					$wb->form[$wb->currentform]->$var = wb_get_value($ctrl);
 			}

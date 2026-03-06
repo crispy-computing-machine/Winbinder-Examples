@@ -36,8 +36,9 @@ const StatusBar = 29;
 const TabControl = 30;
 const ToolBar = 31;
 const TreeView = 32;
-const Splitter = 34;
-const Timer = 33;
+const ScintillaEdit = 33;
+const Splitter = 35;
+const Timer = 34;
 const WBC_VERSION = "2";
 const WBC_BORDER = 8;
 const WBC_BOTTOM = 8192;
@@ -83,6 +84,19 @@ const WBC_RESIZE = 8192;
 const WBC_REDRAW = 16384;
 const WBC_HEADERSEL = 32768;
 const WBC_DROPFILES = 65536;
+const WBC_SCN_MODIFIED = 131072;
+const WBC_SCN_UPDATEUI = 262144;
+const WBC_SCN_MARGINCLICK = 524288;
+const WBC_SCN_CHARADDED = 1048576;
+const WBC_TASK_PROGRESS = 1114112;
+const WBC_TASK_COMPLETE = 1114113;
+const WBC_TASK_ERROR = 1114114;
+const WBC_TASK_CANCELLED = 1114115;
+const WB_TASK_STATUS_PENDING = 0;
+const WB_TASK_STATUS_RUNNING = 1;
+const WB_TASK_STATUS_COMPLETED = 2;
+const WB_TASK_STATUS_FAILED = 3;
+const WB_TASK_STATUS_CANCELLED = 4;
 const WBC_ALT = 32;
 const WBC_CONTROL = 8;
 const WBC_SHIFT = 4;
@@ -166,6 +180,9 @@ const WBC_MAX_ACCELS = 256;
 const WBC_MAX_ITEM_STRING = 1024;
 const WBC_MAX_TREEVIEW_LEVELS = 25;
 const WBC_MAX_IMAGELIST_IMAGES = 128;
+const WBC_SCLEX_HTML = 4;
+const WBC_SC_STYLE_DEFAULT = 32;
+const WBC_SC_STYLE_LINENUMBER = 33;
 const PBS_MARQUEE = 8;
 const PBM_SETMARQUEE = 1034;
 const PBM_GETPOS = 1032;
@@ -4699,6 +4716,14 @@ function wb_create_font(string $name, int $height, ?int $color = 0, ?int $flags 
 }
 
 /**
+ * Get font details as array
+ * 
+ * @param int $source
+ * @return array|bool
+ */
+function wb_get_font(int $source) : array|bool{}
+
+/**
  * Destroys a font created by wb_create_window().
  * If font is absent or zero, destroys all fonts previously created.
  *
@@ -4940,7 +4965,7 @@ function wb_set_size(int $wbObject, array|int $parameter = 0, ?int $window_heigh
  *
  * Returns TRUE on success or FALSE if an error occurs.
  *
- * @link https://crispy-computing-machine.github.io/Winbinder-Docs/functions/wb_get_position.html
+ * @link https://crispy-computing-machine.github.io/Winbinder-Docs/functions/wb_set_position.html
  * @param int $wbObject
  * @param int|null $x
  * @param int|null $y
@@ -4951,7 +4976,7 @@ function wb_set_position(int $wbObject, ?int $x = 0, ?int $y = 0): bool
 }
 
 /**
- * @link https://crispy-computing-machine.github.io/Winbinder-Docs/functions/wb_set_position.html
+ * @link https://crispy-computing-machine.github.io/Winbinder-Docs/functions/wb_get_position.html
  * @param int $wbObject
  * @param bool|null $clientarea
  * @return array|null
@@ -5089,9 +5114,7 @@ function wb_sys_dlg_color(int $wbObjectParent, ?string $title = '', ?int $color 
  * @param int|null $style
  * @return array|string
  */
-function wb_sys_dlg_open(int $wbObjectParent, ?string $title = '', ?string $filter = '', ?string $path = '', ?int $style = 0): array|string
-{
-}
+function wb_sys_dlg_open(int $wbObjectParent, ?string $title = '', array|string|null $filter = '', ?string $path = '', ?int $style = 0) : array|string{}
 
 /**
  * Displays the standard Save As dialog box.
@@ -5107,9 +5130,7 @@ function wb_sys_dlg_open(int $wbObjectParent, ?string $title = '', ?string $filt
  * @param string|null $default_extension
  * @return string|null
  */
-function wb_sys_dlg_save(int $wbObjectParent, ?string $title = '', ?string $filter = '', ?string $path = '', ?string $file = '', ?string $default_extension = ''): ?string
-{
-}
+function wb_sys_dlg_save(int $wbObjectParent, ?string $title = '', array|string|null $filter = '', ?string $path = '', ?string $file = '', ?string $default_extension = '') : ?string{}
 
 /**
  * Displays the standard Font select dialog box.
@@ -5295,3 +5316,379 @@ function wb_set_splitter_panes(int $splitter, int $pane1, int $pane2) : bool{}
  * @return bool
  */
 function wb_set_splitter_minsize(int $splitter, int $min_pane1, int $min_pane2) : bool{}
+
+/**
+ * No beep, timeout (ms) closes message box automatically
+ * @param int $wbObject
+ * @param string $message
+ * @param string|null $title
+ * @param int $style
+ * @param int $timeout
+ * @return int|bool|null
+ */
+function wb_quiet_message_box(int $wbObject, string $message, ?string $title = '', int $style = 0, int $timeout = 0) : int|bool|null{}
+
+/**
+ * Set listview colours
+ *
+ * mode = 1 (WBC_LV_FORE): text color only (clrText) is applied.
+ *
+ * mode = 2 (WBC_LV_BACK): background color only (clrTextBk) is applied.
+ *
+ * mode = 3 (WBC_LV_FORE | WBC_LV_BACK): both text and background are applied.
+ *
+ * mode = 0 (WBC_LV_NONE): it clears that color entry (same effect as wb_clear_listview_item_color).
+ *
+ * @param int $wbObject
+ * @param int $row
+ * @param int $column
+ * @param int $foreground
+ * @param int $background
+ * @param int $mode
+ * @return bool
+ */
+function wb_set_listview_item_color(int $wbObject, int $row, int $column, int $foreground, int $background, int $mode) : bool{}
+
+/**
+ * Clear listview colours on item
+ * #
+ * @param int $wbObject
+ * @param int $row
+ * @param int $column
+ * @return bool
+ */
+function wb_clear_listview_item_color(int $wbObject, int $row, int $column) : bool{}
+
+/**
+ * Clear listview colours (all)
+ * 
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_clear_listview_colors(int $wbObject) : bool{}
+
+/**
+ * Set the full document text for a Scintilla editor control.
+ *
+ * @param int $wbObject
+ * @param string $text
+ * @return bool
+ */
+function wb_scintilla_set_text(int $wbObject, string $text) : bool{}
+
+/**
+ * Get the full document text from a Scintilla editor control.
+ *
+ * @param int $wbObject
+ * @return string|null
+ */
+function wb_scintilla_get_text(int $wbObject) : ?string{}
+
+/**
+ * Append text to the end of the current Scintilla document.
+ *
+ * @param int $wbObject
+ * @param string $text
+ * @return bool
+ */
+function wb_scintilla_append_text(int $wbObject, string $text) : bool{}
+
+/**
+ * Clear all text and reset document state in the Scintilla control.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_clear_all(int $wbObject) : bool{}
+
+/**
+ * Get the current caret position in the Scintilla document.
+ *
+ * @param int $wbObject
+ * @return int
+ */
+function wb_scintilla_get_current_pos(int $wbObject) : int{}
+
+/**
+ * Set the text selection range by start and end positions.
+ *
+ * @param int $wbObject
+ * @param int $start
+ * @param int $end
+ * @return bool
+ */
+function wb_scintilla_set_selection(int $wbObject, int $start, int $end) : bool{}
+
+/**
+ * Get the start position of the current Scintilla selection.
+ *
+ * @param int $wbObject
+ * @return int
+ */
+function wb_scintilla_get_selection_start(int $wbObject) : int{}
+
+/**
+ * Get the end position of the current Scintilla selection.
+ *
+ * @param int $wbObject
+ * @return int
+ */
+function wb_scintilla_get_selection_end(int $wbObject) : int{}
+
+/**
+ * Move the caret and viewport to the given zero-based line number.
+ *
+ * @param int $wbObject
+ * @param int $line
+ * @return bool
+ */
+function wb_scintilla_goto_line(int $wbObject, int $line) : bool{}
+
+/**
+ * Get the total line count of the current Scintilla document.
+ *
+ * @param int $wbObject
+ * @return int
+ */
+function wb_scintilla_get_line_count(int $wbObject) : int{}
+
+/**
+ * Enable or disable read-only mode for the Scintilla editor.
+ *
+ * @param int $wbObject
+ * @param bool $read_only
+ * @return bool
+ */
+function wb_scintilla_set_readonly(int $wbObject, bool $read_only) : bool{}
+
+/**
+ * Undo the last editable action in the Scintilla document.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_undo(int $wbObject) : bool{}
+
+/**
+ * Redo the most recently undone action in the Scintilla document.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_redo(int $wbObject) : bool{}
+
+/**
+ * Cut the current selection from Scintilla to the clipboard.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_cut(int $wbObject) : bool{}
+
+/**
+ * Copy the current selection from Scintilla to the clipboard.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_copy(int $wbObject) : bool{}
+
+/**
+ * Paste clipboard text into Scintilla at the caret position.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_paste(int $wbObject) : bool{}
+
+/**
+ * Set tab width (in columns) for text layout/indentation.
+ *
+ * @param int $wbObject
+ * @param int $width
+ * @return bool
+ */
+function wb_scintilla_set_tab_width(int $wbObject, int $width) : bool{}
+
+/**
+ * Choose whether indentation uses tab characters instead of spaces.
+ *
+ * @param int $wbObject
+ * @param bool $use_tabs
+ * @return bool
+ */
+function wb_scintilla_set_use_tabs(int $wbObject, bool $use_tabs) : bool{}
+
+/**
+ * Show or hide indentation guides in Scintilla.
+ *
+ * @param int $wbObject
+ * @param bool $enabled
+ * @return bool
+ */
+function wb_scintilla_set_indent_guides(int $wbObject, bool $enabled) : bool{}
+
+/**
+ * Show or hide line numbers and optionally set margin width.
+ *
+ * @param int $wbObject
+ * @param bool $enabled
+ * @param int|null $width
+ * @return bool
+ */
+function wb_scintilla_set_line_numbers(int $wbObject, bool $enabled, ?int $width = 48) : bool{}
+
+/**
+ * Set the active Scintilla lexer used for syntax parsing/highlighting.
+ *
+ * @param int $wbObject
+ * @param int $lexer
+ * @return bool
+ */
+function wb_scintilla_set_lexer(int $wbObject, int $lexer) : bool{}
+
+/**
+ * Set keywords for a lexer keyword set index.
+ *
+ * @param int $wbObject
+ * @param int $set_index
+ * @param string $keywords
+ * @return bool
+ */
+function wb_scintilla_set_keywords(int $wbObject, int $set_index, string $keywords) : bool{}
+
+/**
+ * Set style colours and optional bold/italic traits for a style index.
+ *
+ * @param int $wbObject
+ * @param int $style
+ * @param int $foreground
+ * @param int $background
+ * @param bool|null $bold
+ * @param bool|null $italic
+ * @return bool
+ */
+function wb_scintilla_set_style(int $wbObject, int $style, int $foreground, int $background, ?bool $bold, ?bool $italic) : bool{}
+
+/**
+ * Apply built-in PHP lexer and style defaults to the editor.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_apply_php_preset(int $wbObject) : bool{}
+
+/**
+ * Show autocomplete dropdown using a separator-delimited candidate list.
+ *
+ * @param int $wbObject
+ * @param string $list
+ * @param int|null $entered_length
+ * @return bool
+ */
+function wb_scintilla_autocomplete_show(int $wbObject, string $list, ?int $entered_length = 0) : bool{}
+
+/**
+ * Hide/cancel the active autocomplete dropdown.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_autocomplete_cancel(int $wbObject) : bool{}
+
+/**
+ * Show a calltip popup near the caret or an explicit document position.
+ *
+ * @param int $wbObject
+ * @param string $text
+ * @param int|null $position
+ * @return bool
+ */
+function wb_scintilla_calltip_show(int $wbObject, string $text, ?int $position = -1) : bool{}
+
+/**
+ * Hide/cancel the active calltip popup.
+ *
+ * @param int $wbObject
+ * @return bool
+ */
+function wb_scintilla_calltip_cancel(int $wbObject) : bool{}
+
+/**
+ * Show or hide visible whitespace markers.
+ *
+ * @param int $wbObject
+ * @param bool $enabled
+ * @return bool
+ */
+function wb_scintilla_set_whitespace_view(int $wbObject, bool $enabled) : bool{}
+
+/**
+ * Show or hide end-of-line markers.
+ *
+ * @param int $wbObject
+ * @param bool $enabled
+ * @return bool
+ */
+function wb_scintilla_set_eol_view(int $wbObject, bool $enabled) : bool{}
+
+/**
+ * Trigger built-in PHP autocomplete logic using a trigger token.
+ *
+ * @param int $wbObject
+ * @param string $trigger
+ * @return bool
+ */
+function wb_scintilla_show_php_autocomplete(int $wbObject, string $trigger) : bool{}
+
+/**
+ * Start monitoring path
+ *
+ * @param string $path
+ * @param bool $recursive
+ * @param int $debounce
+ * @return int|false
+ */
+function wb_watch_path(string $path, bool $recursive = false, int $debounce = 200) : int|false{}
+
+/**
+ * Stop monitoring path
+ * @param int $watchId
+ * @return bool
+ */
+function wb_unwatch_path(int $watchId) : bool{}
+
+/**
+ * Poll changes
+ *
+ * @param int $timeout
+ * @param int $maxEvents
+ * @return array
+ */
+function wb_watch_poll(int $timeout = 0, int $maxEvents = 0) : array{}
+
+/**
+ * @param int $wbObject
+ * @param string $command
+ * @param int $estimated_ms
+ * @return int
+ */
+function wb_task_run(int $wbObject, string $command, int $estimated_ms = 0) : int{}
+
+/**
+ * Returns array of:
+ * "status"
+ * "progress"
+ * "exit_code"
+ * "error_code"
+ *
+ * @param int $task_id
+ * @return array|null
+ */
+function wb_task_poll(int $task_id) : ?array{}
+
+/**
+ * @param int $task_id
+ * @return bool
+ */
+function wb_task_cancel(int $task_id) : bool{}

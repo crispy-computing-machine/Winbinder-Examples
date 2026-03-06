@@ -47,7 +47,7 @@ function create_main_window()
 	// Set up some values
 
 	$ctrl = wb_get_control($maintab, IDC_WELCOMETEXT);
-	_set_text($ctrl, "This code demonstrates how to implement tabs using the form editor (FE).\n\n" .
+	temp_set_text($ctrl, "This code demonstrates how to implement tabs using the form editor (FE).\n\n" .
 		"This example is a simple \"Options\" dialog box which you may use it as a template for your own projects.\n\n" .
 		"There are three separate project files, one for the dialog base, and one for each tab.\n\n" .
 		"You may even open two or more instances of FE to see one tab while you are creating another one."
@@ -56,7 +56,7 @@ function create_main_window()
 	$ctrl = wb_get_control($maintab, IDC_LANGUAGE);
 	$languages = array('Dutch', 'English', 'French', 'German', 'Italian', 'Portuguese', 'Russian');
 	foreach($languages as $lang) {
-		_create_items($ctrl, $lang);
+		temp_create_items($ctrl, $lang);
 	}
 
 	// Show it

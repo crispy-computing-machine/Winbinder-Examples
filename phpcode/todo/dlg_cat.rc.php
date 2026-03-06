@@ -20,19 +20,19 @@ $dlg = wb_create_window($parent, 2, "Edit Categories", WBC_CENTER, WBC_CENTER, 3
 
 // Insert controls
 
-$_tmp_ctrl_ = _create_control($dlg, PushButton, "up_arrow.bmp", 178, 65, 20, 21, ID_MOVEUP, WBC_VISIBLE | WBC_ENABLED, 0);
+$_tmp_ctrl_ = temp_create_control($dlg, PushButton, "up_arrow.bmp", 178, 65, 20, 21, ID_MOVEUP, WBC_VISIBLE | WBC_ENABLED, 0);
 wb_set_image($_tmp_ctrl_, 'C:\@desenv\WinBinder\phpcode\todo/../resources/up_arrow.bmp', GREEN); unset($_tmp_ctrl_);
-$_tmp_ctrl_ = _create_control($dlg, PushButton, "dn_arrow.bmp", 205, 65, 20, 21, ID_MOVEDOWN, WBC_VISIBLE | WBC_ENABLED, 0);
+$_tmp_ctrl_ = temp_create_control($dlg, PushButton, "dn_arrow.bmp", 205, 65, 20, 21, ID_MOVEDOWN, WBC_VISIBLE | WBC_ENABLED, 0);
 wb_set_image($_tmp_ctrl_, 'C:\@desenv\WinBinder\phpcode\todo/../resources/dn_arrow.bmp', GREEN); unset($_tmp_ctrl_);
-_create_control($dlg, EditBox, "(Name)", 178, 8, 146, 21, ID_NAME, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "&Close", 250, 238, 74, 24, IDCANCEL, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "&New", 4, 238, 74, 24, ID_NEWITEM, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "&Delete", 88, 238, 74, 24, ID_DELETEITEM, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "&Set", 169, 238, 74, 24, ID_SETITEM, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, Label, "Level:", 178, 35, 46, 16, IDC_STATIC2119, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
-_create_control($dlg, EditBox, "0", 238, 35, 46, 21, ID_LEVEL, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, Spinner, "", 289, 35, 20, 21, ID_SPINNER, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, TreeView, "", 4, 6, 166, 224, ID_TREE, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, EditBox, "(Name)", 178, 8, 146, 21, ID_NAME, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "&Close", 250, 238, 74, 24, IDCANCEL, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "&New", 4, 238, 74, 24, ID_NEWITEM, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "&Delete", 88, 238, 74, 24, ID_DELETEITEM, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "&Set", 169, 238, 74, 24, ID_SETITEM, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, Label, "Level:", 178, 35, 46, 16, IDC_STATIC2119, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
+temp_create_control($dlg, EditBox, "0", 238, 35, 46, 21, ID_LEVEL, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, Spinner, "", 289, 35, 20, 21, ID_SPINNER, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, TreeView, "", 4, 6, 166, 224, ID_TREE, WBC_VISIBLE | WBC_ENABLED, 0);
 
 // End controls
 

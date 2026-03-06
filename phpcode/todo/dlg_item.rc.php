@@ -20,18 +20,18 @@ $dlg = wb_create_window($parent, 2, "Edit item", WBC_CENTER, WBC_CENTER, 332, 30
 
 // Insert controls
 
-_create_control($dlg, Label, "&Name:", 7, 4, 55, 16, IDC_STATIC2124, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
-_create_control($dlg, EditBox, "", 4, 22, 316, 21, ID_NAME, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, EditBox, "", 4, 63, 316, 126, ID_DESCRIPTION, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
-_create_control($dlg, Label, "&Category:", 7, 196, 55, 16, IDC_STATIC2123, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
-_create_control($dlg, ComboBox, "(Cat)", 4, 219, 140, 130, ID_CATLIST, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
-_create_control($dlg, Label, "&Priority:", 151, 222, 44, 16, IDC_STATIC2127, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
-_create_control($dlg, ComboBox, "(Priority)", 200, 219, 119, 130, ID_PRIORLIST, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
-_create_control($dlg, Label, "&Severity:", 139, 198, 55, 16, IDC_STATIC2126, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
-_create_control($dlg, ComboBox, "(Severity)", 200, 195, 119, 130, ID_SEVERLIST, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
-_create_control($dlg, Label, "&Description:", 7, 45, 55, 16, IDC_STATIC2125, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
-_create_control($dlg, PushButton, "OK", 4, 251, 74, 24, IDOK, WBC_VISIBLE | WBC_ENABLED, 0);
-_create_control($dlg, PushButton, "Cancel", 85, 251, 74, 24, IDCANCEL, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, Label, "&Name:", 7, 4, 55, 16, IDC_STATIC2124, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
+temp_create_control($dlg, EditBox, "", 4, 22, 316, 21, ID_NAME, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, EditBox, "", 4, 63, 316, 126, ID_DESCRIPTION, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
+temp_create_control($dlg, Label, "&Category:", 7, 196, 55, 16, IDC_STATIC2123, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
+temp_create_control($dlg, ComboBox, "(Cat)", 4, 219, 140, 130, ID_CATLIST, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
+temp_create_control($dlg, Label, "&Priority:", 151, 222, 44, 16, IDC_STATIC2127, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
+temp_create_control($dlg, ComboBox, "(Priority)", 200, 219, 119, 130, ID_PRIORLIST, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
+temp_create_control($dlg, Label, "&Severity:", 139, 198, 55, 16, IDC_STATIC2126, WBC_VISIBLE | WBC_ENABLED | WBC_RIGHT, 0);
+temp_create_control($dlg, ComboBox, "(Severity)", 200, 195, 119, 130, ID_SEVERLIST, WBC_VISIBLE | WBC_ENABLED | WBC_READONLY, 0);
+temp_create_control($dlg, Label, "&Description:", 7, 45, 55, 16, IDC_STATIC2125, WBC_VISIBLE | WBC_ENABLED | WBC_MULTILINE, 0);
+temp_create_control($dlg, PushButton, "OK", 4, 251, 74, 24, IDOK, WBC_VISIBLE | WBC_ENABLED, 0);
+temp_create_control($dlg, PushButton, "Cancel", 85, 251, 74, 24, IDCANCEL, WBC_VISIBLE | WBC_ENABLED, 0);
 
 // End controls
 

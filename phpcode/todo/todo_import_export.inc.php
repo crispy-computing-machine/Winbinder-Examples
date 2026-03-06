@@ -22,7 +22,7 @@ function export_txt($window)
 	global $statusbar;
 
 	$filename = "todo_items.txt";
-	$filename = _sys_dlg_save($window, "Export text",
+	$filename = temp_sys_dlg_save($window, "Export text",
 		"Text files (*.txt)\0*.txt\0All files (*.*)\0*.*" . "\0\0",
 		null, $filename);
 	if(!$filename)
@@ -32,7 +32,7 @@ function export_txt($window)
 	$txt = todo_export_text($data);
 
 	file_put_contents($filename, $txt);
-	_set_text($statusbar, basename($filename) . " exported successfully.");
+	temp_set_text($statusbar, basename($filename) . " exported successfully.");
 }
 
 function export_html($window=null)
@@ -40,7 +40,7 @@ function export_html($window=null)
 	global $statusbar;
 
 	$filename = "todo_items.html";
-	$filename = _sys_dlg_save($window, "Export HTML",
+	$filename = temp_sys_dlg_save($window, "Export HTML",
 		"HTML files (*.html, *.htm)\0*.html;*.htm\0All files (*.*)\0*.*" . "\0\0",
 		null, $filename);
 	if(!$filename)
@@ -48,7 +48,7 @@ function export_html($window=null)
 	$data = db_get_data("item", null, "");
 	$html = todo_export_html($data);
 	file_put_contents($filename, $html);
-	_set_text($statusbar, basename($filename) . " exported successfully.");
+	temp_set_text($statusbar, basename($filename) . " exported successfully.");
 }
 
 function export_csv($window)
@@ -56,7 +56,7 @@ function export_csv($window)
 	global $statusbar;
 
 	$filename = "todo_items.csv";
-	$filename = _sys_dlg_save($window, "Export CSV",
+	$filename = temp_sys_dlg_save($window, "Export CSV",
 		"CSV files (*.csv, *.txt)\0*.csv;*.txt\0All files (*.*)\0*.*" . "\0\0",
 		null, $filename);
 	if(!$filename)
@@ -77,7 +77,7 @@ function export_csv($window)
 	}
 
 	file_put_contents($filename, $csv);
-	_set_text($statusbar, basename($filename) . " exported successfully.");
+	temp_set_text($statusbar, basename($filename) . " exported successfully.");
 }
 
 // TODO: Must check if escaped characters are imported correctly
@@ -86,7 +86,7 @@ function import_csv($window)
 {
 	global $statusbar;
 
-	$filename = _sys_dlg_open($window, "Import CSV",
+	$filename = temp_sys_dlg_open($window, "Import CSV",
 		"CSV files (*.csv, *.txt)\0*.csv;*.txt\0All files (*.*)\0*.*" . "\0\0");
 	if($filename)
 		$csv = file($filename);
@@ -103,7 +103,7 @@ function import_csv($window)
 		}
 	}
 
-	_set_text($statusbar, basename($filename) . " imported successfully ($n items added).");
+	temp_set_text($statusbar, basename($filename) . " imported successfully ($n items added).");
 	return true;
 }
 

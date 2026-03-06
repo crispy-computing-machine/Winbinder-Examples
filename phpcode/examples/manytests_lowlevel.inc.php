@@ -78,7 +78,7 @@ function test_lowlevel($window)
 
 	$result .= "END TESTS\n\n";
 
-		_set_text(wb_get_control($maintab, IDC_EDIT6002), $result);
+		temp_set_text(wb_get_control($maintab, IDC_EDIT6002), $result);
 }
 
 // Dummy callback function
@@ -87,7 +87,7 @@ function dummy_callback($window, $id)
 {
 	switch($id) {
 		case ID_RESETHANDLER:
-			_set_text(wb_get_control($window, IDC_EDIT6002),
+			temp_set_text(wb_get_control($window, IDC_EDIT6002),
 				"Resetting window handler...");
 			wb_set_handler($window, "process_main");
 			break;

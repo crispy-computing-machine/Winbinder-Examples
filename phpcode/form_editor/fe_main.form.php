@@ -34,37 +34,37 @@ $wb->mainwin = wb_create_window(null, ResizableWindow, 'WinBinder Form Editor', 
 
 // Insert controls
 
-_create_control($wb->mainwin, Frame, '', 5, 30, 2048, 8, 0, 0x00000000, 0, 0);
-_create_control($wb->mainwin, Frame, '', 5, 65, 165, 8, 0, 0x00000000, 0, 0);
-_create_control($wb->mainwin, Frame, '', 5, 435, 165, 2, 0, 0x00000000, 0, 0);
-_create_control($wb->mainwin, Frame, '', 5, 490, 165, 8, 0, 0x00000000, 0, 0);
-_create_control($wb->mainwin, Label, 'Class:', 5, 235, 40, 20, 0, 0x00000020, 0, 0);
-_create_control($wb->mainwin, Label, 'Caption:', 0, 260, 45, 20, 0, 0x00000020, 0, 0);
-_create_control($wb->mainwin, Label, '&Id:', 5, 285, 40, 20, 0, 0x00000020, 0, 0);
-_create_control($wb->mainwin, Label, '&Left:', 0, 440, 30, 20, 0, 0x00000020, 0, 0);
-_create_control($wb->mainwin, Label, '&Width:', 80, 440, 40, 20, 0, 0x00000020, 0, 0);
-_create_control($wb->mainwin, Label, '&Top:', 0, 465, 30, 20, 0, 0x00000020, 0, 0);
-_create_control($wb->mainwin, Label, '&Height:', 80, 465, 40, 20, 0, 0x00000020, 0, 0);
-_create_control($wb->mainwin, Label, '&Value:', 5, 310, 40, 20, 0, 0x00000020, 0, 0);
-_create_control($wb->mainwin, CheckBox, '&Wireframe', 100, 40, 69, 15, IDC_WIREFRAME, 0x00000000, 0, 0);
-_create_control($wb->mainwin, CheckBox, 'Snap to &grid', 5, 40, 90, 15, IDC_GRID, 0x00000000, 0, 0);
-_create_control($wb->mainwin, TreeView, '', 5, 75, 165, 155, IDC_CONTROLS, 0x00000000, 0, 0);
-_create_control($wb->mainwin, ListView, '', 5, 335, 165, 90, IDC_STYLES, 0x00000000, 0, 0);
-_create_control($wb->mainwin, ComboBox, '', 50, 235, 120, 250, IDC_CLASSES, 0x00000040, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 50, 235, 120, 20, IDC_CLASS, 0x00000040, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 50, 260, 120, 20, IDC_CAPTION, 0x00000000, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 50, 285, 120, 20, IDC_ID, 0x00000000, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 30, 440, 35, 20, IDC_LEFT, 0x00000400, 0, 0);
-_create_control($wb->mainwin, Spinner, '', 65, 440, 15, 20, IDC_LEFTSPINNER, 0x00080000, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 30, 465, 35, 20, IDC_TOP, 0x00000400, 0, 0);
-_create_control($wb->mainwin, Spinner, '', 65, 465, 15, 20, IDC_TOPSPINNER, 0x00080000, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 120, 440, 35, 20, IDC_WIDTH, 0x00000400, 0, 0);
-_create_control($wb->mainwin, Spinner, '', 155, 440, 15, 20, IDC_WIDTHSPINNER, 0x00080000, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 120, 465, 35, 20, IDC_HEIGHT, 0x00000400, 0, 0);
-_create_control($wb->mainwin, Spinner, '', 155, 465, 15, 20, IDC_HEIGHTSPINNER, 0x00080000, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 50, 310, 105, 20, IDC_VALUE, 0x00000000, 0, 0);
-_create_control($wb->mainwin, EditBox, '', 5, 305, 20, 10, IDC_VALUEAUX, 0x00000401, 0, 0);
-_create_control($wb->mainwin, Spinner, '', 155, 310, 15, 20, IDC_VALUESPINNER, 0x00080000, 0, 0);
+temp_create_control($wb->mainwin, Frame, '', 5, 30, 2048, 8, 0, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, Frame, '', 5, 65, 165, 8, 0, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, Frame, '', 5, 435, 165, 2, 0, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, Frame, '', 5, 490, 165, 8, 0, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, Label, 'Class:', 5, 235, 40, 20, 0, 0x00000020, 0, 0);
+temp_create_control($wb->mainwin, Label, 'Caption:', 0, 260, 45, 20, 0, 0x00000020, 0, 0);
+temp_create_control($wb->mainwin, Label, '&Id:', 5, 285, 40, 20, 0, 0x00000020, 0, 0);
+temp_create_control($wb->mainwin, Label, '&Left:', 0, 440, 30, 20, 0, 0x00000020, 0, 0);
+temp_create_control($wb->mainwin, Label, '&Width:', 80, 440, 40, 20, 0, 0x00000020, 0, 0);
+temp_create_control($wb->mainwin, Label, '&Top:', 0, 465, 30, 20, 0, 0x00000020, 0, 0);
+temp_create_control($wb->mainwin, Label, '&Height:', 80, 465, 40, 20, 0, 0x00000020, 0, 0);
+temp_create_control($wb->mainwin, Label, '&Value:', 5, 310, 40, 20, 0, 0x00000020, 0, 0);
+temp_create_control($wb->mainwin, CheckBox, '&Wireframe', 100, 40, 69, 15, IDC_WIREFRAME, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, CheckBox, 'Snap to &grid', 5, 40, 90, 15, IDC_GRID, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, TreeView, '', 5, 75, 165, 155, IDC_CONTROLS, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, ListView, '', 5, 335, 165, 90, IDC_STYLES, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, ComboBox, '', 50, 235, 120, 250, IDC_CLASSES, 0x00000040, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 50, 235, 120, 20, IDC_CLASS, 0x00000040, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 50, 260, 120, 20, IDC_CAPTION, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 50, 285, 120, 20, IDC_ID, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 30, 440, 35, 20, IDC_LEFT, 0x00000400, 0, 0);
+temp_create_control($wb->mainwin, Spinner, '', 65, 440, 15, 20, IDC_LEFTSPINNER, 0x00080000, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 30, 465, 35, 20, IDC_TOP, 0x00000400, 0, 0);
+temp_create_control($wb->mainwin, Spinner, '', 65, 465, 15, 20, IDC_TOPSPINNER, 0x00080000, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 120, 440, 35, 20, IDC_WIDTH, 0x00000400, 0, 0);
+temp_create_control($wb->mainwin, Spinner, '', 155, 440, 15, 20, IDC_WIDTHSPINNER, 0x00080000, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 120, 465, 35, 20, IDC_HEIGHT, 0x00000400, 0, 0);
+temp_create_control($wb->mainwin, Spinner, '', 155, 465, 15, 20, IDC_HEIGHTSPINNER, 0x00080000, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 50, 310, 105, 20, IDC_VALUE, 0x00000000, 0, 0);
+temp_create_control($wb->mainwin, EditBox, '', 5, 305, 20, 10, IDC_VALUEAUX, 0x00000401, 0, 0);
+temp_create_control($wb->mainwin, Spinner, '', 155, 310, 15, 20, IDC_VALUESPINNER, 0x00080000, 0, 0);
 
 // End controls
 

@@ -52,32 +52,32 @@ define("ID_FRAME6",	145);
 $mainwin = wb_create_window(0, AppWindow, APPNAME, WBC_CENTER, WBC_CENTER, 350, 460, WBC_NOTIFY, WBC_KEYDOWN);
 
 // create controls
-_create_control($mainwin, Frame, "Centered edit box", 15, 15, 315, 48, ID_FRAME1);
-_create_control($mainwin, Label, "Insert text", 30, 35, 50, 20, ID_LABEL1);
-$eb = _create_control($mainwin, EditBox, "", 90, 32, 100, 20, ID_EDIT1, WBC_CENTER);
-_create_control($mainwin, Label, "style: WBC_CENTERED", 200, 35, 120, 20);
+temp_create_control($mainwin, Frame, "Centered edit box", 15, 15, 315, 48, ID_FRAME1);
+temp_create_control($mainwin, Label, "Insert text", 30, 35, 50, 20, ID_LABEL1);
+$eb = temp_create_control($mainwin, EditBox, "", 90, 32, 100, 20, ID_EDIT1, WBC_CENTER);
+temp_create_control($mainwin, Label, "style: WBC_CENTERED", 200, 35, 120, 20);
 
-_create_control($mainwin, Frame, "Disabled edit box", 15, 75, 315, 48, ID_FRAME2);
-_create_control($mainwin, EditBox, "This edit box is disabled.", 30, 93, 160, 20, ID_EDIT2, WBC_DISABLED);
-_create_control($mainwin, Label, "style: WBC_DISABLED", 200, 95, 120, 20, ID_LABEL2);
+temp_create_control($mainwin, Frame, "Disabled edit box", 15, 75, 315, 48, ID_FRAME2);
+temp_create_control($mainwin, EditBox, "This edit box is disabled.", 30, 93, 160, 20, ID_EDIT2, WBC_DISABLED);
+temp_create_control($mainwin, Label, "style: WBC_DISABLED", 200, 95, 120, 20, ID_LABEL2);
 
-_create_control($mainwin, Frame, "Multiline edit box", 15, 135, 315, 108, ID_FRAME3);
-_create_control($mainwin, EditBox, "This one has long, long, long, long (very long) wrapped text.", 30, 155, 160, 70, ID_EDIT3, WBC_MULTILINE);
-_create_control($mainwin, Label, "style: WBC_MULTILINE", 200, 155, 120, 20, ID_LABEL3);
+temp_create_control($mainwin, Frame, "Multiline edit box", 15, 135, 315, 108, ID_FRAME3);
+temp_create_control($mainwin, EditBox, "This one has long, long, long, long (very long) wrapped text.", 30, 155, 160, 70, ID_EDIT3, WBC_MULTILINE);
+temp_create_control($mainwin, Label, "style: WBC_MULTILINE", 200, 155, 120, 20, ID_LABEL3);
 
-_create_control($mainwin, Frame, "Digits-only edit box", 15, 250, 315, 48, ID_FRAME4);
-_create_control($mainwin, EditBox, "", 30, 270, 160, 20, ID_EDIT4, WBC_NUMBER);
-_create_control($mainwin, Label, "style: WBC_NUMBER", 200, 270, 120, 20, ID_LABEL4);
+temp_create_control($mainwin, Frame, "Digits-only edit box", 15, 250, 315, 48, ID_FRAME4);
+temp_create_control($mainwin, EditBox, "", 30, 270, 160, 20, ID_EDIT4, WBC_NUMBER);
+temp_create_control($mainwin, Label, "style: WBC_NUMBER", 200, 270, 120, 20, ID_LABEL4);
 
-_create_control($mainwin, Frame, "Read-only edit box", 15, 300, 315, 48, ID_FRAME5);
-_create_control($mainwin, EditBox, "This text cannot be edited.", 30, 320, 160, 20, ID_EDIT5, WBC_READONLY);
-_create_control($mainwin, Label, "style: WBC_READONLY", 200, 320, 120, 20, ID_LABEL5);
+temp_create_control($mainwin, Frame, "Read-only edit box", 15, 300, 315, 48, ID_FRAME5);
+temp_create_control($mainwin, EditBox, "This text cannot be edited.", 30, 320, 160, 20, ID_EDIT5, WBC_READONLY);
+temp_create_control($mainwin, Label, "style: WBC_READONLY", 200, 320, 120, 20, ID_LABEL5);
 
-_create_control($mainwin, Frame, "Masked edit box", 15, 350, 315, 48, ID_FRAME6);
-_create_control($mainwin, EditBox, "", 30, 370, 160, 20, ID_EDIT6, WBC_MASKED);
-_create_control($mainwin, Label, "style: WBC_MASKED", 200, 370, 120, 20, ID_LABEL6);
+temp_create_control($mainwin, Frame, "Masked edit box", 15, 350, 315, 48, ID_FRAME6);
+temp_create_control($mainwin, EditBox, "", 30, 370, 160, 20, ID_EDIT6, WBC_MASKED);
+temp_create_control($mainwin, Label, "style: WBC_MASKED", 200, 370, 120, 20, ID_LABEL6);
 
-$statusbar = _create_control($mainwin, StatusBar);
+$statusbar = temp_create_control($mainwin, StatusBar);
 
 // Enter application loop
 
@@ -98,7 +98,7 @@ function process_main($window, $id, $ctrl=0, $lparam1=0, $lparam2=0) {
 		case ID_EDIT3:
 		case ID_EDIT6:
 			if($lparam1 == WBC_KEYDOWN)
-				_set_text($statusbar, "Char $lparam2: " . chr($lparam2));
+				temp_set_text($statusbar, "Char $lparam2: " . chr($lparam2));
 			break;
 		break;
 

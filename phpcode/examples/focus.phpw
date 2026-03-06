@@ -51,46 +51,46 @@ function create_main_window()
 
 	// Insert various controls
 
-	_create_control($mainwin, CheckBox, "Checkbox 1", 14, 105, 91, 14, 0);
-	_create_control($mainwin, CheckBox, "Checkbox 2", 14, 125, 91, 14, 0);
-	$combo = _create_control($mainwin, ComboBox, "", 399, 4, 130, 195, 0, WBC_READONLY);
-	_set_text($combo, "1\n2\n3");
-	_create_control($mainwin, EditBox, "10", 169, 152, 145, 21, 0, WBC_MASKED);
-	_create_control($mainwin, EditBox, "20", 226, 175, 89, 21, 0, WBC_NUMBER);
-	_create_control($mainwin, EditBox, "30", 325, 61, 205, 55, 0, WBC_MULTILINE);
-	_create_control($mainwin, EditBox, "40", 4, 175, 155, 21, 0, WBC_READONLY);
-	_create_control($mainwin, EditBox, "50", 235, 104, 40, 19, 0, WBC_NUMBER);
-	_create_control($mainwin, EditBox, "Hi", 148, 104, 40, 19, 0, WBC_NUMBER);
-	_create_control($mainwin, EditBox, "Pack my box with five dozen liquor jugs", 4, 152, 155, 21, 0);
-	_create_control($mainwin, Frame, "Group box", 4, 6, 140, 89, 0);
-	_create_control($mainwin, Gauge, "Progress bar", 184, 35, 103, 14, 0);
-	_create_control($mainwin, Label, "&Digits only:", 169, 180, 55, 21, 0, WBC_RIGHT);
-	_create_control($mainwin, Label, "(Values)", 4, 204, 316, 26, 0, WBC_MULTILINE);
-	_create_control($mainwin, Label, "Drag me:", 193, 52, 59, 14, 0, WBC_CENTER);
-	_create_control($mainwin, Label, "Label", 148, 35, 26, 14, 0, WBC_RIGHT);
-	$list = _create_control($mainwin, ListBox, "", 325, 4, 68, 52, 0);
-	_set_text($list, "A\nB\nC");
-	_create_control($mainwin, RTFEditBox, "Rich text", 325, 120, 205, 55, 0);
-	_create_control($mainwin, RadioButton, "Opt. &B1", 74, 24, 58, 14, 0, WBC_GROUP);
-	_create_control($mainwin, RadioButton, "&Opt. B2", 74, 48, 58, 14, 0);
-	_create_control($mainwin, RadioButton, "O&pt. B3", 74, 73, 58, 14, 0);
-	_create_control($mainwin, RadioButton, "Opt. A&1", 10, 24, 59, 14, 0, WBC_GROUP);
-	_create_control($mainwin, RadioButton, "Opt. A&2", 10, 48, 59, 14, 0);
-	_create_control($mainwin, RadioButton, "Opt. A&3", 10, 73, 59, 14, 0);
-	_create_control($mainwin, ScrollBar, "Horizontal scroll", 148, 130, 145, 16, 0);
-	_create_control($mainwin, ScrollBar, "Horizontal scroll", 154, 9, 136, 16, 0);
-	_create_control($mainwin, ScrollBar, "Vertical scroll", 298, 4, 16, 126, 0);
-	_create_control($mainwin, Slider, "Slider control", 148, 68, 145, 26, 0);
-	_create_control($mainwin, Spinner, "Hello", 190, 104, 16, 19, 0);
+	temp_create_control($mainwin, CheckBox, "Checkbox 1", 14, 105, 91, 14, 0);
+	temp_create_control($mainwin, CheckBox, "Checkbox 2", 14, 125, 91, 14, 0);
+	$combo = temp_create_control($mainwin, ComboBox, "", 399, 4, 130, 195, 0, WBC_READONLY);
+	temp_set_text($combo, "1\n2\n3");
+	temp_create_control($mainwin, EditBox, "10", 169, 152, 145, 21, 0, WBC_MASKED);
+	temp_create_control($mainwin, EditBox, "20", 226, 175, 89, 21, 0, WBC_NUMBER);
+	temp_create_control($mainwin, EditBox, "30", 325, 61, 205, 55, 0, WBC_MULTILINE);
+	temp_create_control($mainwin, EditBox, "40", 4, 175, 155, 21, 0, WBC_READONLY);
+	temp_create_control($mainwin, EditBox, "50", 235, 104, 40, 19, 0, WBC_NUMBER);
+	temp_create_control($mainwin, EditBox, "Hi", 148, 104, 40, 19, 0, WBC_NUMBER);
+	temp_create_control($mainwin, EditBox, "Pack my box with five dozen liquor jugs", 4, 152, 155, 21, 0);
+	temp_create_control($mainwin, Frame, "Group box", 4, 6, 140, 89, 0);
+	temp_create_control($mainwin, Gauge, "Progress bar", 184, 35, 103, 14, 0);
+	temp_create_control($mainwin, Label, "&Digits only:", 169, 180, 55, 21, 0, WBC_RIGHT);
+	temp_create_control($mainwin, Label, "(Values)", 4, 204, 316, 26, 0, WBC_MULTILINE);
+	temp_create_control($mainwin, Label, "Drag me:", 193, 52, 59, 14, 0, WBC_CENTER);
+	temp_create_control($mainwin, Label, "Label", 148, 35, 26, 14, 0, WBC_RIGHT);
+	$list = temp_create_control($mainwin, ListBox, "", 325, 4, 68, 52, 0);
+	temp_set_text($list, "A\nB\nC");
+	temp_create_control($mainwin, RTFEditBox, "Rich text", 325, 120, 205, 55, 0);
+	temp_create_control($mainwin, RadioButton, "Opt. &B1", 74, 24, 58, 14, 0, WBC_GROUP);
+	temp_create_control($mainwin, RadioButton, "&Opt. B2", 74, 48, 58, 14, 0);
+	temp_create_control($mainwin, RadioButton, "O&pt. B3", 74, 73, 58, 14, 0);
+	temp_create_control($mainwin, RadioButton, "Opt. A&1", 10, 24, 59, 14, 0, WBC_GROUP);
+	temp_create_control($mainwin, RadioButton, "Opt. A&2", 10, 48, 59, 14, 0);
+	temp_create_control($mainwin, RadioButton, "Opt. A&3", 10, 73, 59, 14, 0);
+	temp_create_control($mainwin, ScrollBar, "Horizontal scroll", 148, 130, 145, 16, 0);
+	temp_create_control($mainwin, ScrollBar, "Horizontal scroll", 154, 9, 136, 16, 0);
+	temp_create_control($mainwin, ScrollBar, "Vertical scroll", 298, 4, 16, 126, 0);
+	temp_create_control($mainwin, Slider, "Slider control", 148, 68, 145, 26, 0);
+	temp_create_control($mainwin, Spinner, "Hello", 190, 104, 16, 19, 0);
 
 	// Insert controls to monitor the focus
 
-	_create_control($mainwin, PushButton, "Message box",     325, 180, 100, 24, IDC_MSGBOX);
-	_create_control($mainwin, PushButton, "Modal dialog",    325, 210, 100, 24, IDC_MODAL);
-	_create_control($mainwin, PushButton, "Modeless dialog", 325, 240, 100, 24, IDC_MODELESS);
+	temp_create_control($mainwin, PushButton, "Message box",     325, 180, 100, 24, IDC_MSGBOX);
+	temp_create_control($mainwin, PushButton, "Modal dialog",    325, 210, 100, 24, IDC_MODAL);
+	temp_create_control($mainwin, PushButton, "Modeless dialog", 325, 240, 100, 24, IDC_MODELESS);
 
-	_create_control($mainwin, Label, "Time:", 10, 245, 80, 22, ID_TIME);
-	_create_control($mainwin, Label, "...", 5, 265, 545, 22, IDC_FOCUS);
+	temp_create_control($mainwin, Label, "Time:", 10, 245, 80, 22, ID_TIME);
+	temp_create_control($mainwin, Label, "...", 5, 265, 545, 22, IDC_FOCUS);
 
 	$font = wb_create_font("Arial", 10, null, FTA_BOLD);
 	wb_set_font(wb_get_control($mainwin, IDC_FOCUS), $font);
@@ -107,8 +107,8 @@ function process_main($window, $id)
 	switch($id) {
 
 		case ID_TIMER:
-			_set_text(wb_get_control($window, ID_TIME), date("h:i:s A"));
-			_set_text(wb_get_control($window, IDC_FOCUS), 'Focus: "' . _get_text(wb_get_focus()) . '"');
+			temp_set_text(wb_get_control($window, ID_TIME), date("h:i:s A"));
+			temp_set_text(wb_get_control($window, IDC_FOCUS), 'Focus: "' . temp_get_text(wb_get_focus()) . '"');
 			break;
 
 		case IDC_MSGBOX:
@@ -117,13 +117,13 @@ function process_main($window, $id)
 
 		case IDC_MODAL:
 			$dlg = wb_create_window($window, ModalDialog, "Modal dialog box", WBC_CENTER, WBC_CENTER, 200, 100);
-			_create_control($dlg, PushButton, "Close me", 40, 20, 100, 20, IDCLOSE);
+			temp_create_control($dlg, PushButton, "Close me", 40, 20, 100, 20, IDCLOSE);
 			wb_set_handler($dlg, "process_dlg");
 			break;
 
 		case IDC_MODELESS:
 			$dlg = wb_create_window($window, ModelessDialog, "Modeless dialog box", WBC_CENTER, WBC_CENTER, 200, 100);
-			_create_control($dlg, PushButton, "Close me", 40, 20, 100, 20, IDCLOSE);
+			temp_create_control($dlg, PushButton, "Close me", 40, 20, 100, 20, IDCLOSE);
 			wb_set_handler($dlg, "process_dlg");
 			break;
 

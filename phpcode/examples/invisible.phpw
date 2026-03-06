@@ -32,14 +32,14 @@ define("APPNAME", 	"Invisible controls");
 
 $mainwin = wb_create_window(0, PopupWindow, APPNAME, WBC_CENTER, WBC_CENTER, 200, 200);
 
-$statusbar = _create_control($mainwin, StatusBar, "Click the screen");
+$statusbar = temp_create_control($mainwin, StatusBar, "Click the screen");
 
 wb_set_cursor(ImageButton, 'finger');
 
-_create_control($mainwin, ImageButton, "",   0,   0, 100, 100, 101);
-_create_control($mainwin, ImageButton, "", 100,   0, 100, 100, 102);
-_create_control($mainwin, ImageButton, "",   0, 100, 100, 100, 103);
-_create_control($mainwin, ImageButton, "", 100, 100, 100, 100, 104);
+temp_create_control($mainwin, ImageButton, "",   0,   0, 100, 100, 101);
+temp_create_control($mainwin, ImageButton, "", 100,   0, 100, 100, 102);
+temp_create_control($mainwin, ImageButton, "",   0, 100, 100, 100, 103);
+temp_create_control($mainwin, ImageButton, "", 100, 100, 100, 100, 104);
 
 
 class TestObjectHandler {
@@ -59,7 +59,7 @@ class TestObjectHandler {
 
 			default:
 				wb_play_sound(WBC_BEEP);
-				_set_text($statusbar, "Control $id was clicked.");
+				temp_set_text($statusbar, "Control $id was clicked.");
 				break;
 		}
 	}
@@ -88,7 +88,7 @@ function process_main($window, $id, $ctrl=0, $lparam=0, $lparam2=0, $lparam3=0)
 
 		default:
 			wb_play_sound(WBC_BEEP);
-			_set_text($statusbar, "Control $id was clicked.");
+			temp_set_text($statusbar, "Control $id was clicked.");
 			break;
 	}
 }
